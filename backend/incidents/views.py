@@ -81,7 +81,7 @@ from datetime import timedelta
 
 model = ChatGoogleGenerativeAI(
                 model="gemini-2.0-flash",
-                api_key="AIzaSyCKE2zTu0pMUnh42p4tYiNeheACg5Ns-zo",
+                api_key="AIzaSyBGW7u4VlKm89iA_5O-9uDrjridseA_bKs",
                 max_retries=3,
                 retry_wait_strategy=wait_exponential(multiplier=1, min=4, max=10)
             )
@@ -1580,7 +1580,7 @@ import google.generativeai as genai
 import json
 
 # Configure Gemini API
-genai.configure(api_key="AIzaSyCKE2zTu0pMUnh42p4tYiNeheACg5Ns-zo")
+genai.configure(api_key="AIzaSyBGW7u4VlKm89iA_5O-9uDrjridseA_bKs")
 
 @api_view(['GET'])
 def incident_forecast(request):
@@ -1706,7 +1706,7 @@ def incident_forecast(request):
         }
         
         # IMPROVED PROMPT - More conversational, structured output
-        model = genai.GenerativeModel('gemini-2.0-flash-exp')
+        model = genai.GenerativeModel('gemini-2.0-flash')
         
         prompt = f"""You are an expert public safety analyst. Analyze this incident data and provide insights in a clear, professional tone.
 
