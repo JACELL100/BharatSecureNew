@@ -16,7 +16,7 @@ class EmergencyHelplineBot:
         # Initialize chat history and model
         self.chat_history: List = []
         try:
-            self.model = ChatGoogleGenerativeAI(model='gemini-1.5-pro', api_key='AIzaSyDv7RThoILjeXAryluncDRZ1QeFxAixR7Q')
+            self.model = ChatGoogleGenerativeAI(model='gemini-1.5-pro')
         except Exception as e:
             logger.error(f"Failed to initialize model: {str(e)}")
             raise
