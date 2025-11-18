@@ -34,6 +34,11 @@ ALLOWED_HOSTS = [
     '.vercel.app',  # If using Vercel
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:5173", 
+    "https://yourdomain.com", 
+]
 
 # Application definition
 
@@ -82,7 +87,6 @@ SIMPLE_JWT = {
 
 # Add Expo and local IPs for React Native
 CORS_ALLOW_ALL_ORIGINS = True
-
 
 WEBPUSH_SETTINGS = {
     "VAPID_PUBLIC_KEY": "BE38RCKNK0Ig5qBWT0SpZ4ya9OV05THWXOnGhselt3IWPWgN__M3lNHULW1PjXV2SuZz96dWuNNFFaB1jiGsPyc",
