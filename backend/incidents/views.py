@@ -78,10 +78,12 @@ from django.db.models.functions import (
 )
 from django.utils import timezone
 from datetime import timedelta
+from dotenv import load_dotenv
+
+load_dotenv()
 
 model = ChatGoogleGenerativeAI(
                 model="gemini-2.0-flash",
-                api_key="AIzaSyBGW7u4VlKm89iA_5O-9uDrjridseA_bKs",
                 max_retries=3,
                 retry_wait_strategy=wait_exponential(multiplier=1, min=4, max=10)
             )
@@ -1187,13 +1189,13 @@ def advanced_incident_analysis(request):
                             Case(
                                 When(
                                     resolved_at__isnull=False,
-                                    then=ExpressionWrapper(
+                                    then=Extract(
                                         F('resolved_at') - F('reported_at'),
-                                        output_field=DurationField()
+                                        'epoch'  # Converts interval to seconds
                                     )
                                 ),
                                 default=None,
-                                output_field=DurationField(),
+                                output_field=FloatField(),
                             )
                         ),
                         FloatField()

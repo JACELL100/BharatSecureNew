@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect, Suspense, lazy } from "react";
 import { useLocation } from "react-router-dom";
 import OurFeatures from "../components/OurFeatures";
 import FloatingChatbot from "@/components/FloatingChatbot";
-import Chartglobal from "./Chart-global";
+import Chartglobal from "./chart-global";
 import LanguageToggle from "@/components/ui/LanguageToggle";
+
 
 
 const Testimonials = lazy(() => import("@/components/Testimonials"));
