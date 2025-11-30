@@ -13,7 +13,7 @@ const Footer = lazy(() => import("../components/Footer"));
 const LoadingSpinner = () => (
   <div className="flex justify-center items-center min-h-[400px]">
     <div className="relative w-16 h-16">
-      <div className="w-16 h-16 rounded-full border-4 border-cyan-600/20 border-t-cyan-400 animate-spin"></div>
+      <div className="w-16 h-16 rounded-full border-4 border-[#4da6a8]/20 border-t-[#4da6a8] animate-spin"></div>
     </div>
   </div>
 );
@@ -83,15 +83,15 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-slate-900 min-h-screen">
+    <div className="bg-[#0f0f0f] min-h-screen">
       <LanguageToggle />
-      <div className="relative bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+      <div className="relative bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f]">
         {/* Content sections */}
         <div className="relative z-10">
           {/* Fullscreen Intro Section */}
           <section className="relative h-screen flex flex-col justify-center items-center px-4">
             <div className="text-center mb-10">
-              <p className="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto">
+              <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
                 Empowering citizens to report civic problems, track progress,
                 and build cleaner, safer neighborhoods together.
               </p>
@@ -101,7 +101,7 @@ const Home = () => {
             <div className="relative mb-10">
               <button
                 onClick={handleSOSClick}
-                className="bg-red-600 text-white text-xl md:text-2xl font-bold py-6 px-10 rounded-full shadow-lg flex items-center justify-center"
+                className="bg-[#c85c5c] text-white text-xl md:text-2xl font-bold py-6 px-10 rounded-full shadow-lg flex items-center justify-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +119,7 @@ const Home = () => {
                 </svg>
                 EMERGENCY SOS
               </button>
-              <p className="text-slate-400 text-center mt-4 text-sm">
+              <p className="text-gray-400 text-center mt-4 text-sm">
                 Press in case of emergency
               </p>
             </div>
@@ -127,12 +127,12 @@ const Home = () => {
             {/* Downward Arrow */}
             <button
               onClick={scrollToFeatures}
-              className="bg-cyan-600/20 rounded-full p-3"
+              className="bg-[#4da6a8]/20 rounded-full p-3"
               aria-label="Scroll down"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-cyan-400"
+                className="h-8 w-8 text-[#4da6a8]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -149,33 +149,33 @@ const Home = () => {
 
           {/* Features Section */}
           <div ref={featuresRef}>
-            <section className="relative bg-slate-900 py-16 px-4">
+            <section className="relative bg-[#0f0f0f] py-16 px-4">
               <OurFeatures />
             </section>
           </div>
 
           {/* Chart Section */}
-          <section className="relative py-16 bg-slate-900 px-4">
+          <section className="relative py-16 bg-[#0f0f0f] px-4">
             <Chartglobal />
           </section>
 
           {/* Testimonials */}
           <Suspense fallback={<LoadingSpinner />}>
-            <section className="relative bg-slate-900 py-16 px-4">
+            <section className="relative bg-[#0f0f0f] py-16 px-4">
               <Testimonials />
             </section>
           </Suspense>
 
           {/* FAQ */}
           <Suspense fallback={<LoadingSpinner />}>
-            <section ref={faqRef} className="relative py-16 bg-slate-900 px-4">
+            <section ref={faqRef} className="relative py-16 bg-[#0f0f0f] px-4">
               <FAQSection />
             </section>
           </Suspense>
 
           {/* Footer */}
           <Suspense fallback={<LoadingSpinner />}>
-            <section className="relative bg-slate-800">
+            <section className="relative bg-[#1a1a1a]">
               <Footer />
             </section>
           </Suspense>
@@ -199,7 +199,7 @@ const Home = () => {
             <div className="flex justify-center gap-4">
               <button
                 onClick={confirmSOS}
-                className="bg-red-600 text-white px-4 py-2 rounded"
+                className="bg-[#c85c5c] text-white px-4 py-2 rounded"
               >
                 Yes
               </button>

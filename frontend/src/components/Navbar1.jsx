@@ -54,7 +54,7 @@ const Navbar = () => {
       sx={{
         width: 250,
         height: "100%",
-        backgroundColor: "#0f192c",
+        backgroundColor: "#0f0f0f",
         padding: 2,
         display: "flex",
         flexDirection: "column",
@@ -74,11 +74,11 @@ const Navbar = () => {
                 marginBottom: 1,
                 borderRadius: 2,
                 backgroundColor:
-                  activeLink === route ? "#22d3ee" : "transparent",
-                color: activeLink === route ? "#0f192c" : "#fff",
+                  activeLink === route ? "#4da6a8" : "transparent",
+                color: activeLink === route ? "#0f0f0f" : "#fff",
                 "&:hover": {
-                  backgroundColor: "#22d3ee",
-                  color: "#0f192c",
+                  backgroundColor: "#4da6a8",
+                  color: "#0f0f0f",
                 },
               }}
             >
@@ -98,8 +98,8 @@ const Navbar = () => {
             backgroundColor: "transparent",
             color: "#fff",
             "&:hover": {
-              backgroundColor: "#22d3ee",
-              color: "#0f192c",
+              backgroundColor: "#4da6a8",
+              color: "#0f0f0f",
             },
           }}
         >
@@ -107,7 +107,7 @@ const Navbar = () => {
         </ListItem>
       </List>
       <Box sx={{ textAlign: "center", paddingTop: 2 }}>
-        <Typography variant="caption" sx={{ color: "#22d3ee" }}>
+        <Typography variant="caption" sx={{ color: "#4da6a8" }}>
           BharatSecure © {new Date().getFullYear()}
         </Typography>
       </Box>
@@ -118,7 +118,7 @@ const Navbar = () => {
     <AppBar
       position="sticky"
       sx={{
-        backgroundColor: "#0f192c",
+        backgroundColor: "#0f0f0f",
         boxShadow:
           "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
         padding: "0 20px",
@@ -150,7 +150,7 @@ const Navbar = () => {
               sx={{
                 p: 1,
                 "&:hover": {
-                  backgroundColor: "rgba(34, 211, 238, 0.1)",
+                  backgroundColor: "rgba(77, 166, 168, 0.1)",
                 },
               }}
             >
@@ -164,12 +164,12 @@ const Navbar = () => {
               <Typography
                 variant="h6"
                 sx={{
-                  fontWeight: "semibold",
-                  color: "#22d3ee",
+                  fontWeight: "bold",
+                  color: "#4da6a8",
                   fontFamily: "Smooch Sans, sans-serif",
                   fontSize: "3rem",
                   "&:hover": {
-                    color: "#0891b2",
+                    color: "#3e8c8e",
                   },
                   "@media (max-width: 450px)": {
                     fontSize: "2rem",
@@ -198,9 +198,9 @@ const Navbar = () => {
                     fontWeight: "bold",
                     margin: "0 20px",
                     borderBottom:
-                      activeLink === route ? "2px solid #22d3ee" : "none",
+                      activeLink === route ? "2px solid #4da6a8" : "none",
                     "&:hover": {
-                      color: "#22d3ee",
+                      color: "#4da6a8",
                       backgroundColor: "transparent",
                     },
                   }}
@@ -220,10 +220,10 @@ const Navbar = () => {
                   "/heatmap",
                   "/voice-report",
                 ].includes(activeLink)
-                  ? "2px solid #22d3ee"
+                  ? "2px solid #4da6a8"
                   : "none",
                 "&:hover": {
-                  color: "#22d3ee",
+                  color: "#4da6a8",
                   backgroundColor: "transparent",
                 },
               }}
@@ -242,13 +242,13 @@ const Navbar = () => {
             <Link to="/login" style={{ textDecoration: "none" }}>
               <Button
                 sx={{
-                  color: "#22d3ee",
+                  color: "#4da6a8",
                   fontWeight: "bold",
-                  border: "2px solid #22d3ee",
+                  border: "2px solid #4da6a8",
                   borderRadius: 3,
                   "&:hover": {
-                    backgroundColor: "#22d3ee",
-                    color: "#0f192c",
+                    backgroundColor: "#4da6a8",
+                    color: "#0f0f0f",
                   },
                 }}
               >
@@ -258,13 +258,13 @@ const Navbar = () => {
           ) : (
             <Button
               sx={{
-                color: "#22d3ee",
+                color: "#4da6a8",
                 fontWeight: "bold",
-                border: "2px solid #22d3ee",
+                border: "2px solid #4da6a8",
                 borderRadius: 3,
                 "&:hover": {
-                  backgroundColor: "#22d3ee",
-                  color: "#0f192c",
+                  backgroundColor: "#4da6a8",
+                  color: "#0f0f0f",
                 },
               }}
               onClick={() => {
@@ -281,9 +281,9 @@ const Navbar = () => {
           <IconButton
             sx={{
               display: { xs: "block", md: "none" },
-              color: "#22d3ee",
+              color: "#4da6a8",
               "&:hover": {
-                backgroundColor: "rgba(34, 211, 238, 0.1)",
+                backgroundColor: "rgba(77, 166, 168, 0.1)",
               },
             }}
             onClick={() => toggleDrawer(true)}
@@ -303,7 +303,7 @@ const Navbar = () => {
         }}
         sx={{
           "& .MuiPaper-root": {
-            backgroundColor: "#0f192c",
+            backgroundColor: "#0f0f0f",
             borderRadius: 2,
             boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.3)",
             minWidth: 180,
@@ -313,8 +313,8 @@ const Navbar = () => {
             fontSize: "1rem",
             color: "#fff",
             "&:hover": {
-              backgroundColor: "#22d3ee",
-              color: "#0f192c",
+              backgroundColor: "#4da6a8",
+              color: "#0f0f0f",
               fontWeight: "bold",
             },
           },

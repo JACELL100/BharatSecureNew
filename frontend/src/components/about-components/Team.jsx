@@ -64,7 +64,7 @@ const MeetTheTeam = () => {
     <Box sx={{ 
       py: 6, 
       px: 2,
-      background: '#001a2f'
+      background: '#0f0f0f'
     }}>
       <Typography
         variant="h3"
@@ -73,12 +73,7 @@ const MeetTheTeam = () => {
           fontWeight: "bold",
           mb: 4,
           fontFamily: "ubuntu",
-          color: "#00ffff",
-          textShadow: '0 0 10px #00ffff',
-          transition: '0.3s',
-          '&:hover': {
-            textShadow: '0 0 20px #00ffff'
-          }
+          color: "#4da6a8",
         }}
       >
         Meet the Team
@@ -90,13 +85,7 @@ const MeetTheTeam = () => {
             <Card
               sx={{
                 textAlign: "center",
-                background: '#002240',
-                transition: 'all 0.3s ease',
-                boxShadow: '8px 8px 16px #001527, -8px -8px 16px #002f59',
-                '&:hover': {
-                  transform: 'translateY(-5px)',
-                  boxShadow: '12px 12px 24px #001527, -12px -12px 24px #002f59, 0 0 20px rgba(0, 255, 255, 0.2)'
-                }
+                background: '#1a1a1a',
               }}
             >
               <CardMedia
@@ -106,11 +95,6 @@ const MeetTheTeam = () => {
                   height: "auto",
                   aspectRatio: "1 / 1",
                   objectFit: "cover",
-                  filter: 'brightness(0.9)',
-                  transition: '0.3s',
-                  '&:hover': {
-                    filter: 'brightness(1.1)',
-                  }
                 }}
                 image={member.imageUrl}
                 alt={member.name}
@@ -122,12 +106,11 @@ const MeetTheTeam = () => {
               <CardContent>
                 <Typography variant="h6" sx={{ 
                   fontWeight: "bold",
-                  color: '#00ffff',
-                  textShadow: '0 0 5px rgba(0, 255, 255, 0.3)'
+                  color: '#4da6a8',
                 }}>
                   {member.name}
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#80ffff' }}>
+                <Typography variant="body2" sx={{ color: '#8db8b9' }}>
                   {member.role}
                 </Typography>
                 <Box sx={{ mt: 2 }}>
@@ -135,11 +118,7 @@ const MeetTheTeam = () => {
                     href={member.github}
                     target="_blank"
                     sx={{ 
-                      color: '#00ffff',
-                      '&:hover': {
-                        color: '#80ffff',
-                        transform: 'scale(1.1)',
-                      }
+                      color: '#4da6a8',
                     }}
                   >
                     <GitHub />
@@ -148,11 +127,7 @@ const MeetTheTeam = () => {
                     href={member.linkedin}
                     target="_blank"
                     sx={{ 
-                      color: '#00ffff',
-                      '&:hover': {
-                        color: '#80ffff',
-                        transform: 'scale(1.1)',
-                      }
+                      color: '#4da6a8',
                     }}
                   >
                     <LinkedIn />

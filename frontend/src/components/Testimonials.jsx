@@ -26,13 +26,13 @@ const Testimonials = () => {
   ];
 
   return (
-    <div className="bg-slate-900 py-16 px-4 min-h-screen">
+    <div className="bg-[#0f0f0f] py-16 px-4 min-h-screen">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-cyan-400 mb-6 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#4da6a8] mb-6 drop-shadow-[0_0_15px_rgba(77,166,168,0.5)]">
             What Our Users Say
           </h2>
-          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
             Real experiences from people who have used our system to report
             incidents and receive help.
           </p>
@@ -42,16 +42,16 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-slate-800 rounded-2xl p-6 shadow-[inset_-8px_-8px_12px_rgba(0,0,0,0.3),inset_8px_8px_12px_rgba(255,255,255,0.1)] 
-                         hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all duration-300 
+              className="bg-[#1a1a1a] rounded-2xl p-6 border border-[#4da6a8]/20 
+                         hover:shadow-[0_0_20px_rgba(77,166,168,0.3)] transition-all duration-300 
                          transform hover:scale-105 group"
             >
               <div className="flex items-center mb-6">
                 <div className="relative">
                   <div
-                    className="w-16 h-16 rounded-full bg-slate-700 
-                                shadow-[inset_-4px_-4px_8px_rgba(0,0,0,0.3),inset_4px_4px_8px_rgba(255,255,255,0.1)]
-                                group-hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] transition-all duration-300"
+                    className="w-16 h-16 rounded-full bg-[#0f0f0f] 
+                                border border-[#4da6a8]/30
+                                group-hover:shadow-[0_0_15px_rgba(77,166,168,0.3)] transition-all duration-300"
                   >
                     <img
                       src={testimonial.image}
@@ -61,14 +61,14 @@ const Testimonials = () => {
                   </div>
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-xl font-semibold text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.3)]">
+                  <h3 className="text-xl font-semibold text-[#4da6a8] drop-shadow-[0_0_8px_rgba(77,166,168,0.3)]">
                     {testimonial.name}
                   </h3>
-                  <p className="text-sm text-slate-400">{testimonial.role}</p>
+                  <p className="text-sm text-gray-400">{testimonial.role}</p>
                 </div>
               </div>
               <div className="relative">
-                <p className="text-slate-300 italic relative z-10">
+                <p className="text-gray-300 italic relative z-10">
                   {testimonial.testimonial}
                 </p>
               </div>

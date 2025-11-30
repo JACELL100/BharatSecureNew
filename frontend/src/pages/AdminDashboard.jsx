@@ -8,6 +8,15 @@ import { MdOutlineReport, MdReport } from "react-icons/md";
 import AdminCharts from "./chart";
 import PhotoList from "./PhotoList";
 
+// Inject glow animation
+const glowStyle = `
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0px #c85c5c; }
+  50% { box-shadow: 0 0 12px #c85c5c; }
+  100% { box-shadow: 0 0 0px #c85c5c; }
+}
+`;
+
 const AdminDashboard = () => {
   const [total, setTotal] = useState(0);
   const [resolved, setResolved] = useState(0);
@@ -59,9 +68,9 @@ const AdminDashboard = () => {
   }, []);
 
   const getSeverityColor = (severity) => {
-    if (severity === "low") return "text-blue-400 border-blue-400 bg-blue-400/10";
-    if (severity === "medium") return "text-yellow-400 border-yellow-400 bg-yellow-400/10";
-    if (severity === "high") return "text-red-400 border-red-400 bg-red-400/10";
+    if (severity === "low") return "text-[#4da6a8] border-[#4da6a8] bg-[#4da6a8]/10";
+    if (severity === "medium") return "text-[#d1a45b] border-[#d1a45b] bg-[#d1a45b]/10";
+    if (severity === "high") return "text-[#c85c5c] border-[#c85c5c] bg-[#c85c5c]/10";
     return "text-gray-400 border-gray-400 bg-gray-400/10";
   };
 
@@ -209,6 +218,7 @@ const AdminDashboard = () => {
     }
   };
 
+  // CARD COMPONENT
   const IncidentCard = ({ incident, type = "default" }) => {
     const isNew = type === "new";
     const isCompleted = type === "completed";
@@ -222,23 +232,29 @@ const AdminDashboard = () => {
     }
 
     const borderClass = isCompleted
-      ? "border-green-500"
+      ? "border-green-600"
       : isFlagged
-      ? "border-red-500"
+      ? "border-[#c85c5c]"
       : `border ${getSeverityColor(incident.severity).split(" ")[1]}`;
 
     const bgClass = isCompleted
-      ? "bg-green-500/5"
+      ? "bg-green-600/10"
       : isFlagged
-      ? "bg-red-500/5"
-      : `bg-white/5`;
+      ? "bg-[#c85c5c]/10"
+      : "bg-[#1b1b1b]";
+
+    // Apply glow if multiple reports
+    const glowClass =
+      incident.count > 1
+        ? "animate-[pulseGlow_1.5s_ease-in-out_infinite]"
+        : "";
 
     return (
       <div
-        className={`p-4 md:p-6 rounded-2xl ${bgClass} border ${borderClass} shadow-lg transition-all hover:scale-[1.02] w-full h-full flex flex-col`}
+        className={`p-4 md:p-6 rounded-2xl ${bgClass} border ${borderClass} shadow-sm transition-all hover:scale-[1.02] w-full h-full flex flex-col ${glowClass}`}
       >
         {incident.count > 1 && (
-          <div className="text-lg md:text-xl font-bold text-red-500 text-center mb-3 animate-pulse">
+          <div className="text-lg md:text-xl font-bold text-[#c85c5c] text-center mb-3">
             {isNew ? "Multiple Reports!!" : "Mass Report!!"}
           </div>
         )}
@@ -257,15 +273,15 @@ const AdminDashboard = () => {
               Completed
             </div>
           ) : isFlagged ? (
-            <div className="px-3 py-1 border-2 rounded-lg border-red-400 text-red-300 font-bold text-sm">
+            <div className="px-3 py-1 border-2 rounded-lg border-[#c85c5c] text-[#c85c5c] font-bold text-sm">
               Flagged
             </div>
           ) : falseReport.some((report) => report.incidentid === incident.id) ? (
-            <MdReport className="text-2xl md:text-3xl text-red-500 cursor-pointer" title="Marked as False Report" />
+            <MdReport className="text-2xl md:text-3xl text-[#c85c5c] cursor-pointer" title="Marked as False Report" />
           ) : (
             <MdOutlineReport
               onClick={() => handleFalseReport(incident.id)}
-              className="text-2xl md:text-3xl text-white hover:text-red-500 cursor-pointer transition-colors"
+              className="text-2xl md:text-3xl text-white hover:text-[#c85c5c] cursor-pointer transition-colors"
               title="Mark as False Report"
             />
           )}
@@ -278,7 +294,7 @@ const AdminDashboard = () => {
           <p className="text-white font-bold text-sm md:text-base">ID: #{incident.id}</p>
         </div>
 
-        <p className="text-gray-300 text-sm mb-3 line-clamp-3 flex-grow">{incident.description}</p>
+        <p className="text-gray-400 text-sm mb-3 line-clamp-3 flex-grow">{incident.description}</p>
 
         <div className="mb-3">
           <p className="text-gray-300 text-sm">
@@ -291,12 +307,12 @@ const AdminDashboard = () => {
         </div>
 
         <div className="flex items-center mb-4">
-          <MapPin className="text-sky-400 mr-2" size={16} />
+          <MapPin className="text-[#4da6a8] mr-2" size={16} />
           <a
             href={incident.maps_link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sky-400 text-sm hover:text-sky-300 transition-colors"
+            className="text-[#4da6a8] text-sm hover:opacity-80 transition-colors"
           >
             View Location
           </a>
@@ -306,13 +322,13 @@ const AdminDashboard = () => {
           {isNew ? (
             <div className="flex flex-col md:flex-row gap-2">
               <button
-                className="bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded-lg flex-1 transition-all text-sm md:text-base"
+                className="bg-[#4da6a8] hover:bg-[#3d8688] text-white px-3 py-2 rounded-lg flex-1 transition-all text-sm md:text-base"
                 onClick={() => handleNewTask(incident.id)}
               >
                 Accept Task
               </button>
               <button
-                className="bg-gray-700 hover:bg-gray-800 text-white px-3 py-2 rounded-lg flex-1 transition-all text-sm md:text-base"
+                className="bg-[#2a2a2a] hover:bg-[#333] text-white px-3 py-2 rounded-lg flex-1 transition-all text-sm md:text-base"
                 onClick={() => navigate(`/view-details/${incident.id}`)}
               >
                 View Details
@@ -323,22 +339,20 @@ const AdminDashboard = () => {
               <div className="flex items-center gap-2">
                 <Popover>
                   <PopoverTrigger>
-                    <button className="inline-flex items-center text-sky-400 hover:text-sky-300 transition-colors p-2">
+                    <button className="inline-flex items-center text-[#4da6a8] hover:opacity-80 transition-colors p-2">
                       <MessageCircle size={18} className="mr-1" />
                       <span className="text-sm">Chat</span>
                     </button>
                   </PopoverTrigger>
-                  <PopoverContent className="bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 border border-white/20 w-80">
+                  <PopoverContent className="bg-[#1d1d1d] border border-[#2f2f2f] w-80">
                     <div className="p-4">
                       <h3 className="text-lg font-bold text-white mb-2">
                         Chat with {incident.reported_by?.first_name || "Unknown"}
                       </h3>
-                      <p className="text-white mb-4 text-sm">
-                        Start a conversation to discuss this incident.
-                      </p>
+                      <p className="text-white mb-4 text-sm">Start a conversation to discuss this incident.</p>
                       <div className="flex justify-end">
                         <button
-                          className="px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 transition text-sm"
+                          className="px-4 py-2 bg-[#4da6a8] text-white rounded hover:bg-[#3d8688] transition text-sm"
                           onClick={() => navigate("/chat")}
                         >
                           Start Chat
@@ -351,7 +365,7 @@ const AdminDashboard = () => {
                 {!isCompleted && !isFlagged && incident.status !== "Resolved" && (
                   <button
                     onClick={() => handleMarkAsCompleted(incident.id)}
-                    className="bg-green-500 text-white px-3 py-2 rounded-lg hover:bg-green-600 transition-all text-sm flex-1"
+                    className="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition-all text-sm flex-1"
                   >
                     Mark Completed
                   </button>
@@ -359,7 +373,7 @@ const AdminDashboard = () => {
               </div>
 
               <button
-                className="bg-gray-700 hover:bg-gray-800 text-white px-3 py-2 rounded-lg w-full transition-all text-sm"
+                className="bg-[#2a2a2a] hover:bg-[#333] text-white px-3 py-2 rounded-lg w-full transition-all text-sm"
                 onClick={() => navigate(`/view-details/${incident.id}`)}
               >
                 View Details
@@ -372,142 +386,135 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900">
-      <div className="flex-grow p-4 md:p-8 pb-20 md:pb-24 max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-8 -ml-20 md:mb-10 relative">
-          <h1 className="text-xl md:text-4xl lg:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-600 text-center md:text-center [text-shadow:_0_0_30px_rgb(6_182_212_/_45%)]">
-            Admin Dashboard
-          </h1>
-          <button
-            onClick={handleLogout}
-            className="px-3 py-1 md:px-4 md:py-2 bg-red-500/10 text-red-500 font-bold border border-red-500/20 rounded-lg hover:bg-red-500/20 transition-all absolute right-0 top-0 text-sm md:text-base"
-          >
-            Logout
-          </button>
-        </div>
+    <>
+      <style>{glowStyle}</style>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
-          <div className="bg-white/5 p-4 md:p-6 rounded-2xl cursor-pointer border-2 border-red-500 shadow-lg transition-all hover:scale-105 flex items-center justify-between group">
-            <div>
-              <h3 className="text-gray-400 font-medium mb-1 text-sm md:text-base">
-                Total Incidents
-              </h3>
-              <p className="text-2xl md:text-3xl font-bold text-white">{total}</p>
-            </div>
-            <AlertTriangle className="text-red-400 w-8 h-8 md:w-12 md:h-12 group-hover:scale-110 transition-transform" />
-          </div>
-
-          <div className="bg-white/5 cursor-pointer p-4 md:p-6 rounded-2xl border-2 border-green-500 shadow-lg transition-all hover:scale-105 flex items-center justify-between group">
-            <div>
-              <h3 className="text-gray-400 font-medium mb-1 text-sm md:text-base">Resolved</h3>
-              <p className="text-2xl md:text-3xl font-bold text-white">{resolved}</p>
-            </div>
-            <CheckCircle2 className="text-emerald-400 w-8 h-8 md:w-12 md:h-12 group-hover:scale-110 transition-transform" />
-          </div>
-
-          <div className="bg-white/5 p-4 md:p-6 cursor-pointer rounded-2xl border-2 border-yellow-500 shadow-lg transition-all hover:scale-105 flex items-center justify-between group">
-            <div>
-              <h3 className="text-gray-400 font-medium mb-1 text-sm md:text-base">Unresolved</h3>
-              <p className="text-2xl md:text-3xl font-bold text-white">{unresolved}</p>
-            </div>
-            <Timer className="text-yellow-400 w-8 h-8 md:w-12 md:h-12 group-hover:scale-110 transition-transform" />
-          </div>
-        </div>
-
-        {/* New Incidents */}
-        {newTasks.length === 0 ? (
-          <h2 className="text-xl md:text-2xl my-8 text-white text-center">
-            No New Reports Available
-          </h2>
-        ) : (
-          <div className="mb-10 md:mb-14">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 text-center md:text-left">
-              New Incidents
+      <div className="min-h-screen bg-[#0f0f0f]">
+        <div className="flex-grow p-4 md:p-8 pb-20 md:pb-24 max-w-7xl mx-auto">
+          <div className="mb-8 -ml-20 md:mb-10 relative">
+            <h1 className="text-xl md:text-4xl lg:text-5xl font-extrabold text-center text-white">
+              Admin Dashboard
             </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {newTasks.map((incident) => (
-                <IncidentCard key={incident.id} incident={incident} type="new" />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Accepted Incidents */}
-        <div className="mb-10 md:mb-14">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-4 text-center md:text-left">
-            Accepted Incidents
-          </h1>
-
-          <div className="mb-6 flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4">
-            <label
-              htmlFor="severity-filter"
-              className="text-gray-200 font-medium text-sm md:text-base"
-            >
-              Filter by Severity:
-            </label>
-            <select
-              id="severity-filter"
-              className="cursor-pointer w-full md:w-48 p-2 md:p-3 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:shadow-md transition-all text-sm md:text-base"
-              value={filter}
-              onChange={(event) => handlefilter(event.target.value)}
-            >
-              <option value="All">All</option>
-              <option value="High">High</option>
-              <option value="Medium">Medium</option>
-              <option value="Low">Low</option>
-            </select>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {filternew.map((incident) => (
-              <IncidentCard key={incident.id} incident={incident} />
-            ))}
-          </div>
-        </div>
-
-        {/* Completed Incidents */}
-        {completedId.length > 0 && (
-          <div className="mb-10 md:mb-14">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-green-300 mb-6 text-center md:text-left">
-              Completed Incidents
-            </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {completedId.map((incident) => (
-                <IncidentCard key={incident.id} incident={incident} type="completed" />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Flagged Incidents */}
-        {flaggedIncidents.length > 0 && (
-          <div className="mb-10 md:mb-14 text-center">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-red-500 mb-6 text-center md:text-left">
-              Flagged Incidents
-            </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-6">
-              {flaggedIncidents.map((incident) => (
-                <IncidentCard key={incident.id} incident={incident} type="flagged" />
-              ))}
-            </div>
-
-            {/* 🚀 Forecasting Button Added Here */}
             <button
-              onClick={() => navigate("/forecasting")}
-              className="px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-xl text-lg font-semibold shadow-lg transition-all hover:scale-105"
+              onClick={handleLogout}
+              className="px-3 py-1 md:px-4 md:py-2 bg-[#2a2a2a] text-[#c85c5c] font-bold border border-[#c85c5c]/40 rounded-lg hover:bg-[#3a3a3a] transition-all absolute right-0 top-0 text-sm md:text-base"
             >
-              Forecasting
+              Logout
             </button>
           </div>
-        )}
 
-        <PhotoList />
-        <AdminCharts />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
+            <div className="bg-[#1a1a1a] p-4 md:p-6 rounded-2xl cursor-pointer border-2 border-[#c85c5c] shadow-sm transition-all hover:scale-105 flex items-center justify-between group">
+              <div>
+                <h3 className="text-gray-400 font-medium mb-1 text-sm md:text-base">Total Incidents</h3>
+                <p className="text-2xl md:text-3xl font-bold text-white">{total}</p>
+              </div>
+              <AlertTriangle className="text-[#c85c5c] w-8 h-8 md:w-12 md:h-12" />
+            </div>
+
+            <div className="bg-[#1a1a1a] cursor-pointer p-4 md:p-6 rounded-2xl border-2 border-green-600 shadow-sm transition-all hover:scale-105 flex items-center justify-between group">
+              <div>
+                <h3 className="text-gray-400 font-medium mb-1 text-sm md:text-base">Resolved</h3>
+                <p className="text-2xl md:text-3xl font-bold text-white">{resolved}</p>
+              </div>
+              <CheckCircle2 className="text-green-500 w-8 h-8 md:w-12 md:h-12" />
+            </div>
+
+            <div className="bg-[#1a1a1a] p-4 md:p-6 cursor-pointer rounded-2xl border-2 border-[#d1a45b] shadow-sm transition-all hover:scale-105 flex items-center justify-between group">
+              <div>
+                <h3 className="text-gray-400 font-medium mb-1 text-sm md:text-base">Unresolved</h3>
+                <p className="text-2xl md:text-3xl font-bold text-white">{unresolved}</p>
+              </div>
+              <Timer className="text-[#d1a45b] w-8 h-8 md:w-12 md:h-12" />
+            </div>
+          </div>
+
+          {newTasks.length === 0 ? (
+            <h2 className="text-xl md:text-2xl my-8 text-white text-center">No New Reports Available</h2>
+          ) : (
+            <div className="mb-10 md:mb-14">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 text-center md:text-left">
+                New Incidents
+              </h1>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                {newTasks.map((incident) => (
+                  <IncidentCard key={incident.id} incident={incident} type="new" />
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="mb-10 md:mb-14">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-4 text-center md:text-left">
+              Accepted Incidents
+            </h1>
+
+            <div className="mb-6 flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4">
+              <label
+                htmlFor="severity-filter"
+                className="text-gray-200 font-medium text-sm md:text-base"
+              >
+                Filter by Severity:
+              </label>
+              <select
+                id="severity-filter"
+                className="cursor-pointer w-full md:w-48 p-2 md:p-3 text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4da6a8] transition-all text-sm md:text-base"
+                value={filter}
+                onChange={(event) => handlefilter(event.target.value)}
+              >
+                <option value="All">All</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              {filternew.map((incident) => (
+                <IncidentCard key={incident.id} incident={incident} />
+              ))}
+            </div>
+          </div>
+
+          {completedId.length > 0 && (
+            <div className="mb-10 md:mb-14">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-green-300 mb-6 text-center md:text-left">
+                Completed Incidents
+              </h1>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                {completedId.map((incident) => (
+                  <IncidentCard key={incident.id} incident={incident} type="completed" />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {flaggedIncidents.length > 0 && (
+            <div className="mb-10 md:mb-14 text-center">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#c85c5c] mb-6 text-center md:text-left">
+                Flagged Incidents
+              </h1>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-6">
+                {flaggedIncidents.map((incident) => (
+                  <IncidentCard key={incident.id} incident={incident} type="flagged" />
+                ))}
+              </div>
+
+              <button
+                onClick={() => navigate("/forecasting")}
+                className="px-6 py-3 bg-[#4da6a8] hover:bg-[#3d8688] text-white rounded-xl text-lg font-semibold shadow-sm transition-all hover:scale-105"
+              >
+                Forecasting
+              </button>
+            </div>
+          )}
+
+          <PhotoList />
+          <AdminCharts />
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 

@@ -9,17 +9,17 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0f192c] text-gray-200 py-8 shadow-[0_-4px_10px_rgba(0,0,0,0.3)] ">
+    <footer className="bg-[#0f0f0f] text-gray-200 py-8 shadow-[0_-4px_10px_rgba(0,0,0,0.3)] ">
       <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center px-6">
         <div className="mb-6 lg:mb-0 flex items-center space-x-2">
           <button
             onClick={() => navigate("/")}
-            className="p-2 rounded-full hover:bg-sky-900/30 transition-colors"
+            className="p-2 rounded-full hover:bg-[#4da6a8]/30 transition-colors"
           >
             <img src="/image.png" alt="Logo" className="w-9 h-9 rounded-full" />
           </button>
           <Link to="/">
-            <h2 className="font-bold text-[#22d3ee] font-smooch text-3xl hover:text-cyan-300 transition-colors">
+            <h2 className="font-bold text-[#4da6a8] font-smooch text-3xl hover:text-[#3e8c8e] transition-colors">
               BharatSecure
             </h2>
           </Link>
@@ -28,14 +28,14 @@ const Footer = () => {
         <div className="mb-6 lg:mb-0">
           <ul className="flex flex-wrap gap-6 text-sm font-medium">
             <li>
-              <Link to="/" className="hover:text-[#22d3ee] transition-colors">
+              <Link to="/" className="hover:text-[#4da6a8] transition-colors">
                 Home
               </Link>
             </li>
             <li>
               <Link
                 to="/about"
-                className="hover:text-[#22d3ee] transition-colors"
+                className="hover:text-[#4da6a8] transition-colors"
               >
                 About
               </Link>
@@ -43,7 +43,7 @@ const Footer = () => {
             <li>
               <Link
                 to="/blogs"
-                className="hover:text-[#22d3ee] transition-colors"
+                className="hover:text-[#4da6a8] transition-colors"
               >
                 Blogs
               </Link>
@@ -51,7 +51,7 @@ const Footer = () => {
             <li>
               <Link
                 to="/about#features"
-                className="hover:text-[#22d3ee] transition-colors"
+                className="hover:text-[#4da6a8] transition-colors"
               >
                 Features
               </Link>
@@ -59,7 +59,7 @@ const Footer = () => {
             <li>
               <Link
                 to="/feedback"
-                className="hover:text-[#22d3ee] transition-colors"
+                className="hover:text-[#4da6a8] transition-colors"
               >
                 Feedback
               </Link>
@@ -67,7 +67,7 @@ const Footer = () => {
             <li>
               <button
                 onClick={handleFaqClick}
-                className="hover:text-[#22d3ee] transition-colors"
+                className="hover:text-[#4da6a8] transition-colors"
               >
                 FAQ's
               </button>
@@ -99,7 +99,7 @@ const Footer = () => {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-300 hover:text-[#22d3ee] transition-colors"
+              className="text-gray-300 hover:text-[#4da6a8] transition-colors"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d={social.icon} />

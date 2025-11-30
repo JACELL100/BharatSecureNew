@@ -33,10 +33,10 @@ const UserDashboard = () => {
   const token = localStorage.getItem("accessToken");
 
   const getSeverityColor = (severity) => {
-    if (severity === "low") return "text-blue-400 border-lime-300  border-2";
+    if (severity === "low") return "text-[#4da6a8] border-[#4da6a8] border-2";
     if (severity === "medium")
-      return "text-yellow-400 border-yellow-300  border-2";
-    if (severity === "high") return "text-red-400 border-red-300  border-2";
+      return "text-[#d1a45b] border-[#d1a45b] border-2";
+    if (severity === "high") return "text-[#c85c5c] border-[#c85c5c] border-2";
   };
 
   // const getStatusColor = (status) => {
@@ -117,16 +117,16 @@ const UserDashboard = () => {
   console.log("user data dashboard", incidents);
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900">
+      <div className="min-h-screen bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f]">
         <div className="p-4 md:p-8 max-w-[1600px] mx-auto">
           {/* Header */}
           <div className="mb-10 mt-4">
-            <h1 className="text-xl text-left md:text-center md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-600 [text-shadow:_0_0_30px_rgb(6_182_212_/_45%)]">
+            <h1 className="text-xl text-left md:text-center md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#4da6a8] to-[#3e8c8e] [text-shadow:_0_0_30px_rgb(77_166_168_/_45%)]">
               Your Dashboard
             </h1>
             <button
               onClick={handleLogout}
-              className="px-4 py-2 bg-red-500/10 text-red-500 font-bold border border-red-500/20 rounded-lg hover:bg-red-500/20 transition-all absolute right-8 top-20 md:top-28"
+              className="px-4 py-2 bg-[#c85c5c]/10 text-[#c85c5c] font-bold border border-[#c85c5c]/20 rounded-lg hover:bg-[#c85c5c]/20 transition-all absolute right-8 top-20 md:top-28"
             >
               Logout
             </button>
@@ -135,33 +135,33 @@ const UserDashboard = () => {
           {/* Dashboard Stats Cards */}
           <div className="flex flex-col md:flex-row  items-center gap-6  mb-8 justify-center ">
             {/* Total Incidents Card */}
-            <div className="bg-white/5 p-6 rounded-2xl cursor-pointer border-red-400 shadow-[0px_5px_15px_rgba(255,255,255,0.1),0px_10px_25px_rgba(0,0,0,0.7)] transition-all hover:scale-105 hover:shadow-[0px_10px_30px_rgba(255,255,255,0.15),0px_15px_50px_rgba(0,0,0,0.8)] flex items-center justify-between group w-64 md:w-80 border-2 border-red-500">
+            <div className="bg-white/5 p-6 rounded-2xl cursor-pointer border-[#c85c5c] shadow-[0px_5px_15px_rgba(255,255,255,0.1),0px_10px_25px_rgba(0,0,0,0.7)] transition-all hover:scale-105 hover:shadow-[0px_10px_30px_rgba(255,255,255,0.15),0px_15px_50px_rgba(0,0,0,0.8)] flex items-center justify-between group w-64 md:w-80 border-2 border-[#c85c5c]">
               <div>
                 <h3 className="text-gray-400 font-medium mb-1">
                   Total Incidents
                 </h3>
                 <p className="text-3xl font-bold text-white">{total}</p>
               </div>
-              <AlertTriangle className="text-red-400 w-12 h-12 group-hover:scale-110 transition-transform" />
+              <AlertTriangle className="text-[#c85c5c] w-12 h-12 group-hover:scale-110 transition-transform" />
             </div>
 
             {/* Resolved Incidents Card */}
 
-            <div className="bg-white/5 cursor-pointer border-2 border-emerald-400 p-6 rounded-2xl shadow-[0px_5px_15px_rgba(255,255,255,0.1),0px_10px_25px_rgba(0,0,0,0.7)] transition-all hover:scale-105 hover:shadow-[0px_10px_30px_rgba(100,255,100,0.2),0px_15px_50px_rgba(0,0,0,0.8)] flex items-center justify-between group w-64 md:w-80 hover:border-green-500 ">
+            <div className="bg-white/5 cursor-pointer border-2 border-green-500 p-6 rounded-2xl shadow-[0px_5px_15px_rgba(255,255,255,0.1),0px_10px_25px_rgba(0,0,0,0.7)] transition-all hover:scale-105 hover:shadow-[0px_10px_30px_rgba(77_166_168_/_0.2),0px_15px_50px_rgba(0,0,0,0.8)] flex items-center justify-between group w-64 md:w-80 hover:border-green-500 ">
               <div>
                 <h3 className="text-gray-400 font-medium mb-1">Resolved</h3>
                 <p className="text-3xl font-bold text-white">{resolved}</p>
               </div>
-              <CheckCircle2 className="text-emerald-400 w-12 h-12 group-hover:scale-110 transition-transform" />
+              <CheckCircle2 className="text-green-500 w-12 h-12 group-hover:scale-110 transition-transform" />
             </div>
 
             {/* Unresolved Incidents Card */}
-            <div className="bg-white/5  p-6 cursor-pointer rounded-2xl border-white/10 shadow-[0px_5px_15px_rgba(255,255,255,0.1),0px_10px_25px_rgba(0,0,0,0.7)] transition-all hover:scale-105 hover:shadow-[0px_10px_30px_rgba(255,204,0,0.2),0px_15px_50px_rgba(0,0,0,0.8)] flex items-center justify-between group w-64 md:w-80 border-2 border-yellow-500">
+            <div className="bg-white/5  p-6 cursor-pointer rounded-2xl border-white/10 shadow-[0px_5px_15px_rgba(255,255,255,0.1),0px_10px_25px_rgba(0,0,0,0.7)] transition-all hover:scale-105 hover:shadow-[0px_10px_30px_rgba(209_164_91_/_0.2),0px_15px_50px_rgba(0,0,0,0.8)] flex items-center justify-between group w-64 md:w-80 border-2 border-[#d1a45b]">
               <div>
                 <h3 className="text-gray-400 font-medium mb-1">Unresolved</h3>
                 <p className="text-3xl font-bold text-white">{unresolved}</p>
               </div>
-              <Timer className="text-yellow-400 w-12 h-12 group-hover:scale-110 transition-transform" />
+              <Timer className="text-[#d1a45b] w-12 h-12 group-hover:scale-110 transition-transform" />
             </div>
           </div>
 
@@ -241,24 +241,24 @@ const UserDashboard = () => {
                               <div className="flex items-center space-x-3">
                                 <div className="flex items-center space-x-2">
                                   {/* Step 1 */}
-                                  <div className={`w-3 h-3 rounded-full ${step >= 0 ? 'bg-gradient-to-r from-blue-400 to-blue-500 shadow-lg shadow-blue-400/50' : 'bg-gray-600'}`}></div>
-                                  <div className={`w-12 h-1 ${step >= 1 ? 'bg-gradient-to-r from-blue-400 to-yellow-400' : 'bg-gray-600'} rounded-full`}></div>
+                                  <div className={`w-3 h-3 rounded-full ${step >= 0 ? 'bg-gradient-to-r from-[#4da6a8] to-[#3e8c8e] shadow-lg shadow-[#4da6a8]/50' : 'bg-gray-600'}`}></div>
+                                  <div className={`w-12 h-1 ${step >= 1 ? 'bg-gradient-to-r from-[#4da6a8] to-[#d1a45b]' : 'bg-gray-600'} rounded-full`}></div>
                                   
                                   {/* Step 2 */}
-                                  <div className={`w-3 h-3 rounded-full ${step >= 1 ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 shadow-lg shadow-yellow-400/50' : 'bg-gray-600'}`}></div>
-                                  <div className={`w-12 h-1 ${step >= 2 ? 'bg-gradient-to-r from-yellow-400 to-green-400' : 'bg-gray-600'} rounded-full`}></div>
+                                  <div className={`w-3 h-3 rounded-full ${step >= 1 ? 'bg-gradient-to-r from-[#d1a45b] to-[#d1a45b] shadow-lg shadow-[#d1a45b]/50' : 'bg-gray-600'}`}></div>
+                                  <div className={`w-12 h-1 ${step >= 2 ? 'bg-gradient-to-r from-[#d1a45b] to-[#4da6a8]' : 'bg-gray-600'} rounded-full`}></div>
                                   
                                   {/* Step 3 */}
-                                  <div className={`w-3 h-3 rounded-full ${step >= 2 ? 'bg-gradient-to-r from-green-400 to-green-500 shadow-lg shadow-green-400/50' : 'bg-gray-600'}`}></div>
+                                  <div className={`w-3 h-3 rounded-full ${step >= 2 ? 'bg-gradient-to-r from-[#4da6a8] to-[#3e8c8e] shadow-lg shadow-[#4da6a8]/50' : 'bg-gray-600'}`}></div>
                                 </div>
                               </div>
                             </div>
                             {/* Current Status Label */}
                             <div className="mt-2">
                               <span className={`text-xs font-medium ${
-                                step === 0 ? 'text-blue-400' : 
-                                step === 1 ? 'text-yellow-400' : 
-                                step === 2 ? 'text-green-400' : 'text-gray-400'
+                                step === 0 ? 'text-[#4da6a8]' : 
+                                step === 1 ? 'text-[#d1a45b]' : 
+                                step === 2 ? 'text-[#4da6a8]' : 'text-gray-400'
                               }`}>
                                 {step === 0 ? 'Reported' : 
                                  step === 1 ? 'Under Investigation' : 
@@ -272,7 +272,7 @@ const UserDashboard = () => {
                             href={incident.maps_link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center text-sky-400 hover:text-sky-300 transition-colors"
+                            className="inline-flex items-center text-[#4da6a8] hover:text-[#3e8c8e] transition-colors"
                           >
                             <MapPin className="text-xl" />
                           </a>
@@ -281,13 +281,13 @@ const UserDashboard = () => {
                           <Popover>
                             <PopoverTrigger>
                              <button 
-  className="inline-flex items-center text-sky-400 hover:text-sky-300 transition-colors"
+  className="inline-flex items-center text-[#4da6a8] hover:text-[#3e8c8e] transition-colors"
   onClick={() => navigate('/chat')}
 >
   <MessageCircle className="text-xl" />
 </button>
                             </PopoverTrigger>
-                            <PopoverContent className="bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900">
+                            <PopoverContent className="bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f]">
                               <div className="p-4 bg-transparent rounded-xl border border-white/20">
                                 <h3 className="text-lg font-semibold text-white mb-2">
                                   Chat with Authorities
@@ -296,7 +296,7 @@ const UserDashboard = () => {
                                   Start a conversation with authorities to
                                   discuss this incident.
                                 </p>
-                                <button className="w-full px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-all">
+                                <button className="w-full px-4 py-2 bg-[#4da6a8] text-white rounded-lg hover:bg-[#3e8c8e] transition-all">
                                   Start Chat
                                 </button>
                               </div>
@@ -346,17 +346,17 @@ const UserDashboard = () => {
                           href={incident.maps_link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center text-sky-400 hover:text-sky-300 transition-colors p-2 bg-sky-400/10 rounded-lg"
+                          className="inline-flex items-center text-[#4da6a8] hover:text-[#3e8c8e] transition-colors p-2 bg-[#4da6a8]/10 rounded-lg"
                         >
                           <MapPin className="w-5 h-5" />
                         </a>
                         <Popover>
                           <PopoverTrigger>
-                            <button className="inline-flex items-center text-sky-400 hover:text-sky-300 transition-colors p-2 bg-sky-400/10 rounded-lg">
+                            <button className="inline-flex items-center text-[#4da6a8] hover:text-[#3e8c8e] transition-colors p-2 bg-[#4da6a8]/10 rounded-lg">
                               <MessageCircle className="w-5 h-5" />
                             </button>
                           </PopoverTrigger>
-                          <PopoverContent className="bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900">
+                          <PopoverContent className="bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f]">
                             <div className="p-4 bg-transparent rounded-xl border border-white/20">
                               <h3 className="text-lg font-semibold text-white mb-2">
                                 Chat with Authorities
@@ -365,7 +365,7 @@ const UserDashboard = () => {
                                 Start a conversation with authorities to
                                 discuss this incident.
                               </p>
-                              <button className="w-full px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-all">
+                              <button className="w-full px-4 py-2 bg-[#4da6a8] text-white rounded-lg hover:bg-[#3e8c8e] transition-all">
                                 Start Chat
                               </button>
                             </div>
@@ -401,24 +401,24 @@ const UserDashboard = () => {
                         <div className="flex items-center space-x-3 w-full">
                           <div className="flex items-center space-x-2">
                             {/* Step 1 */}
-                            <div className={`w-3 h-3 rounded-full ${step >= 0 ? 'bg-gradient-to-r from-blue-400 to-blue-500 shadow-lg shadow-blue-400/50' : 'bg-gray-600'}`}></div>
-                            <div className={`w-16 h-1 ${step >= 1 ? 'bg-gradient-to-r from-blue-400 to-yellow-400' : 'bg-gray-600'} rounded-full`}></div>
+                            <div className={`w-3 h-3 rounded-full ${step >= 0 ? 'bg-gradient-to-r from-[#4da6a8] to-[#3e8c8e] shadow-lg shadow-[#4da6a8]/50' : 'bg-gray-600'}`}></div>
+                            <div className={`w-16 h-1 ${step >= 1 ? 'bg-gradient-to-r from-[#4da6a8] to-[#d1a45b]' : 'bg-gray-600'} rounded-full`}></div>
                             
                             {/* Step 2 */}
-                            <div className={`w-3 h-3 rounded-full ${step >= 1 ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 shadow-lg shadow-yellow-400/50' : 'bg-gray-600'}`}></div>
-                            <div className={`w-16 h-1 ${step >= 2 ? 'bg-gradient-to-r from-yellow-400 to-green-400' : 'bg-gray-600'} rounded-full`}></div>
+                            <div className={`w-3 h-3 rounded-full ${step >= 1 ? 'bg-gradient-to-r from-[#d1a45b] to-[#d1a45b] shadow-lg shadow-[#d1a45b]/50' : 'bg-gray-600'}`}></div>
+                            <div className={`w-16 h-1 ${step >= 2 ? 'bg-gradient-to-r from-[#d1a45b] to-[#4da6a8]' : 'bg-gray-600'} rounded-full`}></div>
                             
                             {/* Step 3 */}
-                            <div className={`w-3 h-3 rounded-full ${step >= 2 ? 'bg-gradient-to-r from-green-400 to-green-500 shadow-lg shadow-green-400/50' : 'bg-gray-600'}`}></div>
+                            <div className={`w-3 h-3 rounded-full ${step >= 2 ? 'bg-gradient-to-r from-[#4da6a8] to-[#3e8c8e] shadow-lg shadow-[#4da6a8]/50' : 'bg-gray-600'}`}></div>
                           </div>
                         </div>
                       </div>
                       {/* Current Status Label */}
                       <div className="mt-3">
                         <span className={`text-sm font-medium ${
-                          step === 0 ? 'text-blue-400' : 
-                          step === 1 ? 'text-yellow-400' : 
-                          step === 2 ? 'text-green-400' : 'text-gray-400'
+                          step === 0 ? 'text-[#4da6a8]' : 
+                          step === 1 ? 'text-[#d1a45b]' : 
+                          step === 2 ? 'text-[#4da6a8]' : 'text-gray-400'
                         }`}>
                           {step === 0 ? 'Reported' : 
                            step === 1 ? 'Under Investigation' : 
@@ -432,7 +432,7 @@ const UserDashboard = () => {
             </div>
           </div>
         </div>
-        <ChartsUser />
+        {/* <ChartsUser /> */}
         <Footer />
       </div>
 

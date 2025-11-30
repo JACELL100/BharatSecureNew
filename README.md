@@ -312,107 +312,6 @@ Key settings:
 - `API_BASE_URL` - Backend API endpoint
 - `PORT` - Development server port (default: 5173)
 
-## 🔧 Common Development Commands
-
-### Backend
-```powershell
-# Run migrations
-python manage.py migrate
-
-# Create migrations
-python manage.py makemigrations
-
-# Access Django shell
-python manage.py shell
-
-# Run tests
-python manage.py test
-
-# Create superuser
-python manage.py createsuperuser
-```
-
-### Frontend
-```powershell
-# Development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-
-# Run linter
-npm run lint
-```
-
-## 🐛 Troubleshooting
-
-### Backend Issues
-
-**Issue: Virtual environment not activating**
-```powershell
-# Try with full path
-& venv\Scripts\Activate.ps1
-
-# If still failing, change execution policy
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-**Issue: Module not found errors**
-```powershell
-# Reinstall all dependencies
-pip install --force-reinstall -r requirements.txt
-```
-
-**Issue: Database errors**
-```powershell
-# Reset database
-python manage.py flush
-
-# Run migrations again
-python manage.py migrate
-```
-
-**Issue: Port already in use**
-```powershell
-# Run on different port
-python manage.py runserver 0.0.0.0:8001
-```
-
-### Frontend Issues
-
-**Issue: Dependencies not installing**
-```powershell
-# Clear npm cache
-npm cache clean --force
-
-# Reinstall
-npm install
-```
-
-**Issue: Port 5173 already in use**
-```powershell
-npm run dev -- --port 3000
-```
-
-**Issue: API connection errors**
-- Verify backend is running (`http://localhost:8000`)
-- Check `.env` file has correct `VITE_API_BASE_URL`
-- Check browser console for CORS errors
-
-### General Issues
-
-**Issue: CORS errors**
-- Ensure `corsheaders` is in `INSTALLED_APPS`
-- Verify `CORS_ALLOWED_ORIGINS` in backend settings
-- Check frontend API URL matches backend host
-
-**Issue: Authentication failing**
-- Verify JWT tokens are being stored in browser
-- Check `SECRET_KEY` in Django settings
-- Ensure tokens haven't expired
 
 ## 📚 Additional Resources
 
@@ -422,6 +321,65 @@ npm run dev -- --port 3000
 - [Vite Documentation](https://vitejs.dev/)
 - [Google Generative AI](https://ai.google.dev/)
 - [LangChain Documentation](https://python.langchain.com/)
+
+---
+## 🙌 Developer Appreciation
+
+A huge thank you to the brilliant minds behind this platform.
+Their consistency, late-night debugging, and relentless effort turned this project into what it is today.
+
+### **💻 Core Development Team**
+
+#### **👤 Mayank Mehta**
+
+Backend Developer • AI/ML Integration
+GitHub: [https://github.com/code-runner1306](https://github.com/code-runner1306)
+
+#### **👤 Shane Dias**
+
+Frontend Developer • Maps & Analytics •
+GitHub: [https://github.com/Shane-Dias](https://github.com/Shane-Dias)
+
+#### **👤 Jacell Jamble**
+
+Backend Developer • OpenCV • VR •
+GitHub: [https://github.com/JACELL100](https://github.com/JACELL100)
+
+#### **👤 Mayank Bhuvad**
+
+Backend Developer • 
+GitHub: [https://github.com/ImpactG1](https://github.com/ImpactG1)
+
+#### **👤 Serene Dmello**
+
+Frontend Developer • 
+GitHub: [https://github.com/ubet123](https://github.com/ubet123)
+
+#### **👤 Gavin Soares**
+
+App Developer • 
+GitHub: [https://github.com/gavin100305](https://github.com/gavin100305)
+
+#### **👤 Reniyas Nadar**
+
+Chatbot •  RAG •
+GitHub: [https://github.com/Reniyas717](https://github.com/Reniyas717)
+
+#### **👤 Vashni Nadar**
+
+Frontend Developer • 
+GitHub: [https://github.com/Vashni14](https://github.com/Vashni14)
+## ⭐ Special Appreciation
+
+
+
+To every contributor, tester, and supporter —
+**your feedback, ideas, and energy helped shape this project into something meaningful.**
+
+This platform exists because of your teamwork, passion, and willingness to build something impactful.
+
+---
+
 
 ## 🤝 Contributing
 

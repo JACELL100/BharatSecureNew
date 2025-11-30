@@ -54,17 +54,14 @@ const FeedbackForm = () => {
 
   return (
     <>
-      <div className="min-h-screen p-20 bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900">
-        <div
-          className="max-w-2xl w-full mx-auto p-6 py-6 bg-gray-800 rounded-lg shadow-2xl relative overflow-hidden border border-gray-700 transition-transform transform "
-          style={{ boxShadow: "0 0 20px rgba(0, 128, 255, 0.6)" }}
-        >
-          <h1 className="text-3xl font-bold text-center text-blue-400 mb-4">
+      <div className="min-h-screen p-20 bg-[#0f0f0f]">
+        <div className="max-w-2xl w-full mx-auto p-6 py-6 bg-[#1a1a1a] rounded-lg border border-[#333]">
+          <h1 className="text-3xl font-bold text-center text-[#4da6a8] mb-4">
             Feedback Form
           </h1>
 
           {submitted ? (
-            <div className="flex flex-col justify-center items-center text-center text-green-400 min-h-[40vh]">
+            <div className="flex flex-col justify-center items-center text-center text-[#4da6a8] min-h-[40vh]">
               <h2 className="text-xl font-semibold">
                 Thank you for your feedback!
               </h2>
@@ -74,7 +71,7 @@ const FeedbackForm = () => {
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="name" className="block text-gray-300 text-lg">
-                  Name <span className="text-red-500">*</span>
+                  Name <span className="text-[#c85c5c]">*</span>
                 </label>
                 <input
                   type="text"
@@ -83,13 +80,13 @@ const FeedbackForm = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2 border border-[#333] rounded-lg bg-[#2a2a2a] text-white focus:outline-none focus:border-[#4da6a8]"
                 />
               </div>
 
               <div className="mb-4">
                 <label htmlFor="email" className="block text-gray-300 text-lg">
-                  Email <span className="text-red-500">*</span>
+                  Email <span className="text-[#c85c5c]">*</span>
                 </label>
                 <input
                   type="email"
@@ -98,7 +95,7 @@ const FeedbackForm = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2 border border-[#333] rounded-lg bg-[#2a2a2a] text-white focus:outline-none focus:border-[#4da6a8]"
                 />
               </div>
 
@@ -114,7 +111,7 @@ const FeedbackForm = () => {
                   name="feedbackType"
                   value={feedbackType}
                   onChange={(e) => setFeedbackType(e.target.value)}
-                  className="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2 border border-[#333] rounded-lg bg-[#2a2a2a] text-white focus:outline-none focus:border-[#4da6a8]"
                 >
                   <option value="General">General Feedback</option>
                   <option value="Incident">Incident Report</option>
@@ -127,7 +124,7 @@ const FeedbackForm = () => {
                   htmlFor="message"
                   className="block text-gray-300 text-lg"
                 >
-                  Message <span className="text-red-500">*</span>
+                  Message <span className="text-[#c85c5c]">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -136,17 +133,17 @@ const FeedbackForm = () => {
                   onChange={(e) => setMessage(e.target.value)}
                   required
                   rows="4"
-                  className="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2 border border-[#333] rounded-lg bg-[#2a2a2a] text-white focus:outline-none focus:border-[#4da6a8]"
                 ></textarea>
               </div>
 
               {error && (
-                <p className="text-red-400 mb-4 text-center">{error}</p>
+                <p className="text-[#c85c5c] mb-4 text-center">{error}</p>
               )}
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full bg-[#4da6a8] text-white py-2 rounded-lg hover:bg-[#3e8c8e]"
               >
                 Submit Feedback
               </button>

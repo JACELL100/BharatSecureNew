@@ -85,7 +85,7 @@ const Login = () => {
           alignItems: "center",
           justifyContent: "center",
           padding: isMobile ? "20px" : "40px",
-          background: "linear-gradient(to bottom, #0f172a, #1e293b, #0f172a)",
+          background: "linear-gradient(to bottom, #0d0d0f, #111113, #0d0d0f)",
         }}
       >
         <Box
@@ -95,7 +95,7 @@ const Login = () => {
             textAlign: "center",
             padding: isMobile ? 3 : 5,
             borderRadius: "20px",
-            background: "rgba(255, 255, 255, 0.05)",
+            background: "rgba(255, 255, 255, 0.04)",
             backdropFilter: "blur(12px)",
             border: "1px solid rgba(255, 255, 255, 0.1)",
             boxShadow:
@@ -108,7 +108,7 @@ const Login = () => {
               fontWeight: "bold",
               color: "white",
               mb: 2,
-              textShadow: "0 0 25px rgba(6,182,212,0.4)",
+              textShadow: "0 0 25px rgba(77,166,168,0.35)",
             }}
           >
             Welcome Back
@@ -122,7 +122,7 @@ const Login = () => {
               fontSize: isMobile ? "0.9rem" : "1rem",
             }}
           >
-            Sign in to your CivicConnect account.
+            Sign in to your <span style={{ color: "#4da6a8", fontWeight: "bold" }}>BharatSecure</span> account.
           </Typography>
 
           <Divider
@@ -156,21 +156,21 @@ const Login = () => {
                     borderColor: "rgba(255,255,255,0.2)",
                   },
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgb(56,189,248)",
+                    borderColor: "#4da6a8",
                   },
                   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgb(56,189,248)",
-                    boxShadow: "0 0 6px rgba(56,189,248,0.4)",
+                    borderColor: "#4da6a8",
+                    boxShadow: "0 0 6px rgba(77,166,168,0.4)",
                   },
                   "& .MuiFormHelperText-root": {
-                    color: "#f87171",
+                    color: "#c85c5c",
                   },
                 }}
                 InputLabelProps={{
                   sx: {
                     color: "rgba(255,255,255,0.7)",
                     "&.Mui-focused": {
-                      color: "rgb(56,189,248)",
+                      color: "#4da6a8",
                     },
                   },
                 }}
@@ -198,21 +198,21 @@ const Login = () => {
                     borderColor: "rgba(255,255,255,0.2)",
                   },
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgb(56,189,248)",
+                    borderColor: "#4da6a8",
                   },
                   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgb(56,189,248)",
-                    boxShadow: "0 0 6px rgba(56,189,248,0.4)",
+                    borderColor: "#4da6a8",
+                    boxShadow: "0 0 6px rgba(77,166,168,0.4)",
                   },
                   "& .MuiFormHelperText-root": {
-                    color: "#f87171",
+                    color: "#c85c5c",
                   },
                 }}
                 InputLabelProps={{
                   sx: {
                     color: "rgba(255,255,255,0.7)",
                     "&.Mui-focused": {
-                      color: "rgb(56,189,248)",
+                      color: "#4da6a8",
                     },
                   },
                 }}
@@ -226,9 +226,9 @@ const Login = () => {
                     checked={formData.rememberMe}
                     onChange={handleCheckboxChange}
                     sx={{
-                      color: "rgb(56,189,248)",
+                      color: "#4da6a8",
                       "&.Mui-checked": {
-                        color: "rgb(56,189,248)",
+                        color: "#4da6a8",
                       },
                     }}
                   />
@@ -247,8 +247,7 @@ const Login = () => {
                 fullWidth
                 size={isMobile ? "medium" : "large"}
                 sx={{
-                  background:
-                    "linear-gradient(90deg, rgb(56,189,248), rgb(14,165,233))",
+                  background: "linear-gradient(90deg, #4da6a8, #3e8c8e)",
                   color: "white",
                   padding: isMobile ? "10px" : "14px 20px",
                   borderRadius: "12px",
@@ -256,12 +255,11 @@ const Login = () => {
                   textTransform: "none",
                   fontSize: isMobile ? "0.9rem" : "1rem",
                   boxShadow:
-                    "0px 5px 20px rgba(56,189,248,0.4), 0px 5px 30px rgba(14,165,233,0.3)",
+                    "0px 5px 20px rgba(77,166,168,0.35), 0px 5px 30px rgba(62,140,142,0.35)",
                   "&:hover": {
-                    background:
-                      "linear-gradient(90deg, rgb(14,165,233), rgb(2,132,199))",
+                    background: "linear-gradient(90deg, #3e8c8e, #357678)",
                     boxShadow:
-                      "0px 8px 25px rgba(14,165,233,0.5), 0px 8px 35px rgba(2,132,199,0.4)",
+                      "0px 8px 25px rgba(62,140,142,0.45), 0px 8px 35px rgba(53,118,120,0.4)",
                   },
                 }}
                 onClick={handleLogin}
@@ -274,7 +272,7 @@ const Login = () => {
                   sx={{
                     mt: 2,
                     fontSize: "0.9rem",
-                    color: "#f87171",
+                    color: "#c85c5c",
                   }}
                 >
                   {errors.general}
@@ -294,7 +292,7 @@ const Login = () => {
                 <Link
                   to="/signup"
                   style={{
-                    color: "rgb(56,189,248)",
+                    color: "#4da6a8",
                     fontWeight: "bold",
                     textDecoration: "none",
                   }}

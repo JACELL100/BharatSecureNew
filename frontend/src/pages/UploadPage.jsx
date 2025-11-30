@@ -190,7 +190,7 @@ const UploadPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-black">
+    <div className="min-h-screen bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-black">
       <div className="container mx-auto px-4 py-12">
         {/* Header Section */}
         <motion.div
@@ -198,7 +198,7 @@ const UploadPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-10"
         >
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-4 drop-shadow-[0_0_10px_cyan]">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-[#4da6a8] to-[#3e8c8e] bg-clip-text text-transparent mb-4 drop-shadow-[0_0_10px_#4da6a8]">
             Upload Photo
           </h1>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -213,12 +213,12 @@ const UploadPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-2xl mx-auto"
         >
-          <div className="bg-slate-900 rounded-2xl p-8 border border-cyan-500 shadow-[0_0_10px_cyan] transition-all duration-300 hover:shadow-[0_0_20px_cyan]">
+          <div className="bg-[#1a1a1a] rounded-2xl p-8 border border-[#4da6a8] shadow-[0_0_10px_#4da6a8] transition-all duration-300 hover:shadow-[0_0_20px_#4da6a8]">
             <div className="space-y-6">
               {/* Photo Title Section */}
               <div className="relative">
                 <label className="text-gray-300 text-sm font-medium mb-2 block">
-                  <FileText className="w-4 h-4 inline-block mr-2 text-cyan-400" />
+                  <FileText className="w-4 h-4 inline-block mr-2 text-[#4da6a8]" />
                   Photo Title (Optional)
                 </label>
                 <input
@@ -226,7 +226,7 @@ const UploadPage = () => {
                   id="title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full bg-slate-800 text-gray-100 px-4 py-3 rounded-xl border border-slate-700 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] transition-all duration-200"
+                  className="w-full bg-[#2a2a2a] text-gray-100 px-4 py-3 rounded-xl border border-[#333] focus:border-[#4da6a8] focus:ring-1 focus:ring-[#4da6a8] shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] transition-all duration-200"
                   placeholder="Enter a title for your photo"
                 />
               </div>
@@ -235,10 +235,10 @@ const UploadPage = () => {
               {showCamera ? (
                 <div className="relative">
                   <label className="text-gray-300 text-sm font-medium mb-2 block">
-                    <CameraIcon className="w-4 h-4 inline-block mr-2 text-cyan-400" />
+                    <CameraIcon className="w-4 h-4 inline-block mr-2 text-[#4da6a8]" />
                     Camera
                   </label>
-                  <div className="bg-slate-800 rounded-xl overflow-hidden">
+                  <div className="bg-[#2a2a2a] rounded-xl overflow-hidden">
                     <video
                       ref={videoRef}
                       autoPlay
@@ -259,7 +259,7 @@ const UploadPage = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={stopCamera}
-                        className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200"
+                        className="bg-[#c85c5c] hover:bg-[#b54c4c] text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200"
                       >
                         Cancel
                       </motion.button>
@@ -276,7 +276,7 @@ const UploadPage = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={startCamera}
-                      className="bg-gradient-to-r from-green-600 to-emerald-600 text-white py-4 px-6 rounded-xl font-medium shadow-lg transition-all duration-200 flex items-center justify-center gap-2 hover:shadow-green-500/20"
+                      className="bg-gradient-to-r from-[#4da6a8] to-[#3e8c8e] text-white py-4 px-6 rounded-xl font-medium shadow-lg transition-all duration-200 flex items-center justify-center gap-2 hover:shadow-[#4da6a8]/20"
                     >
                       <CameraIcon className="w-5 h-5" />
                       Take Photo
@@ -291,21 +291,21 @@ const UploadPage = () => {
                   {/* File Upload Section */}
                   <div className="relative">
                     <label className="text-gray-300 text-sm font-medium mb-2 block">
-                      <Upload className="w-4 h-4 inline-block mr-2 text-cyan-400" />
+                      <Upload className="w-4 h-4 inline-block mr-2 text-[#4da6a8]" />
                       Upload from Device
                     </label>
                     <div 
-                      className="mt-1 flex justify-center px-6 pt-8 pb-8 border-2 border-slate-700 border-dashed rounded-xl hover:border-cyan-400 transition-colors duration-200 cursor-pointer group"
+                      className="mt-1 flex justify-center px-6 pt-8 pb-8 border-2 border-[#333] border-dashed rounded-xl hover:border-[#4da6a8] transition-colors duration-200 cursor-pointer group"
                       onDragOver={handleDragOver}
                       onDrop={handleDrop}
                       onClick={() => document.getElementById('fileInput').click()}
                     >
                       <div className="space-y-2 text-center">
-                        <div className="mx-auto h-16 w-16 text-gray-400 group-hover:text-cyan-400 transition-colors duration-200 flex items-center justify-center bg-slate-800 rounded-full group-hover:bg-slate-700">
+                        <div className="mx-auto h-16 w-16 text-gray-400 group-hover:text-[#4da6a8] transition-colors duration-200 flex items-center justify-center bg-[#2a2a2a] rounded-full group-hover:bg-[#333]">
                           <Upload className="h-8 w-8" />
                         </div>
                         <div className="flex text-sm text-gray-400">
-                          <span className="relative cursor-pointer rounded-md font-medium text-cyan-400 hover:text-cyan-300">
+                          <span className="relative cursor-pointer rounded-md font-medium text-[#4da6a8] hover:text-[#3e8c8e]">
                             Click to upload
                           </span>
                           <p className="pl-1">or drag and drop</p>
@@ -314,7 +314,7 @@ const UploadPage = () => {
                           PNG, JPG, GIF up to 10MB
                         </p>
                         {selectedFile && (
-                          <p className="text-sm text-green-400 font-medium">
+                          <p className="text-sm text-[#4da6a8] font-medium">
                             ✓ {selectedFile.name}
                           </p>
                         )}
@@ -336,8 +336,8 @@ const UploadPage = () => {
               {!showCamera && (
                 <div className="relative">
                   <label className="text-gray-300 text-sm font-medium mb-2 block">
-                    <MapPin className="w-4 h-4 inline-block mr-2 text-cyan-400" />
-                    Location <span className="text-red-400">*</span>
+                    <MapPin className="w-4 h-4 inline-block mr-2 text-[#4da6a8]" />
+                    Location <span className="text-[#c85c5c]">*</span>
                   </label>
                   <div className="space-y-3">
                     <motion.button
@@ -347,10 +347,10 @@ const UploadPage = () => {
                       disabled={gettingLocation}
                       className={`w-full py-3 rounded-xl font-medium transition-all duration-200 flex items-center justify-center gap-2 ${
                         gettingLocation
-                          ? 'bg-slate-700 text-gray-400 cursor-not-allowed'
+                          ? 'bg-[#2a2a2a] text-gray-400 cursor-not-allowed'
                           : location
-                          ? 'bg-green-600 hover:bg-green-700 text-white'
-                          : 'bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:shadow-orange-500/20'
+                          ? 'bg-[#4da6a8] hover:bg-[#3e8c8e] text-white'
+                          : 'bg-gradient-to-r from-[#4da6a8] to-[#3e8c8e] text-white hover:shadow-[#4da6a8]/20'
                       }`}
                     >
                       {gettingLocation ? (
@@ -379,16 +379,16 @@ const UploadPage = () => {
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="bg-slate-800 rounded-xl p-4"
+                        className="bg-[#2a2a2a] rounded-xl p-4"
                       >
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                          <div className="bg-slate-700 rounded-lg p-3">
+                          <div className="bg-[#333] rounded-lg p-3">
                             <span className="text-gray-400">Latitude:</span>
                             <span className="text-white ml-2 font-mono">
                               {location.latitude.toFixed(6)}
                             </span>
                           </div>
-                          <div className="bg-slate-700 rounded-lg p-3">
+                          <div className="bg-[#333] rounded-lg p-3">
                             <span className="text-gray-400">Longitude:</span>
                             <span className="text-white ml-2 font-mono">
                               {location.longitude.toFixed(6)}
@@ -410,8 +410,8 @@ const UploadPage = () => {
                   disabled={uploading}
                   className={`w-full py-4 rounded-xl font-medium shadow-lg transition-all duration-200 flex items-center justify-center gap-2 ${
                     uploading
-                      ? 'bg-slate-700 text-gray-400 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:shadow-cyan-500/20'
+                      ? 'bg-[#2a2a2a] text-gray-400 cursor-not-allowed'
+                      : 'bg-gradient-to-r from-[#4da6a8] to-[#3e8c8e] text-white hover:shadow-[#4da6a8]/20'
                   }`}
                 >
                   {uploading ? (
@@ -440,8 +440,8 @@ const UploadPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className={`mt-6 p-4 rounded-xl flex items-center gap-2 ${
                   messageType === 'success'
-                    ? 'bg-green-900/20 border border-green-500/50 text-green-400'
-                    : 'bg-red-900/20 border border-red-500/50 text-red-400'
+                    ? 'bg-[#4da6a8]/20 border border-[#4da6a8]/50 text-[#4da6a8]'
+                    : 'bg-[#c85c5c]/20 border border-[#c85c5c]/50 text-[#c85c5c]'
                 }`}
               >
                 {messageType === 'success' ? (
@@ -468,30 +468,30 @@ const UploadPage = () => {
             transition={{ delay: 0.2 }}
             className="max-w-2xl mx-auto mt-8"
           >
-            <div className="bg-slate-900 rounded-2xl p-8 border border-slate-700 shadow-lg">
+            <div className="bg-[#1a1a1a] rounded-2xl p-8 border border-[#333] shadow-lg">
               <div className="flex items-center gap-2 mb-4">
-                <Eye className="w-5 h-5 text-cyan-400" />
+                <Eye className="w-5 h-5 text-[#4da6a8]" />
                 <h3 className="text-xl font-semibold text-white">Preview</h3>
               </div>
-              <div className="relative rounded-xl overflow-hidden bg-slate-800">
+              <div className="relative rounded-xl overflow-hidden bg-[#2a2a2a]">
                 <img 
                   src={URL.createObjectURL(selectedFile)} 
                   alt="Preview" 
                   className="w-full h-64 object-cover"
                 />
-                <div className="absolute top-4 right-4 bg-slate-900/80 rounded-lg px-3 py-1 flex items-center gap-2">
-                  <Image className="w-4 h-4 text-cyan-400" />
+                <div className="absolute top-4 right-4 bg-[#1a1a1a]/80 rounded-lg px-3 py-1 flex items-center gap-2">
+                  <Image className="w-4 h-4 text-[#4da6a8]" />
                   <span className="text-sm text-gray-300">{selectedFile.name}</span>
                 </div>
               </div>
               <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
-                <div className="bg-slate-800 rounded-lg p-3">
+                <div className="bg-[#2a2a2a] rounded-lg p-3">
                   <span className="text-gray-400">File Size:</span>
                   <span className="text-white ml-2 font-medium">
                     {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
                   </span>
                 </div>
-                <div className="bg-slate-800 rounded-lg p-3">
+                <div className="bg-[#2a2a2a] rounded-lg p-3">
                   <span className="text-gray-400">Type:</span>
                   <span className="text-white ml-2 font-medium">
                     {selectedFile.type}
@@ -510,30 +510,30 @@ const UploadPage = () => {
             transition={{ delay: 0.4 }}
             className="max-w-2xl mx-auto mt-8"
           >
-            <div className="bg-slate-900/50 rounded-2xl p-6 border border-slate-700">
+            <div className="bg-[#1a1a1a]/50 rounded-2xl p-6 border border-[#333]">
               <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                <Camera className="w-5 h-5 text-cyan-400" />
+                <Camera className="w-5 h-5 text-[#4da6a8]" />
                 Upload Tips
               </h4>
               <ul className="text-gray-400 space-y-2 text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="text-cyan-400 mt-1">•</span>
+                  <span className="text-[#4da6a8] mt-1">•</span>
                   Higher resolution images provide better VR experiences
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-cyan-400 mt-1">•</span>
+                  <span className="text-[#4da6a8] mt-1">•</span>
                   Panoramic photos work especially well in VR environments
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-cyan-400 mt-1">•</span>
+                  <span className="text-[#4da6a8] mt-1">•</span>
                   Maximum file size is 10MB for optimal performance
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-cyan-400 mt-1">•</span>
+                  <span className="text-[#4da6a8] mt-1">•</span>
                   Camera feature works best in well-lit environments
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-cyan-400 mt-1">•</span>
+                  <span className="text-[#4da6a8] mt-1">•</span>
                   Location data is required for geo-tagging your photos
                 </li>
               </ul>

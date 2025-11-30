@@ -16,37 +16,37 @@ import {
 } from "recharts";
 
 const COLORS = [
-  "#00ffff", // cyan
-  "#00ccff", // light blue
-  "#0099ff", // blue
-  "#0066ff", // darker blue
-  "#0033ff", // even darker blue
+  "#4da6a8", // primary accent
+  "#3e8c8e", // darker accent
+  "#d1a45b", // medium severity
+  "#c85c5c", // high severity
+  "#2a2a2a", // dark background
 ];
 
 // Neuromorphic Card Components
 const Card = ({ children, className = "" }) => (
   <div
-    className={`text-cyan-300 bg-[#002345] rounded-xl p-6 shadow-[5px_5px_15px_rgba(0,0,0,0.3),-5px_-5px_15px_rgba(0,255,255,0.1)] border border-cyan-400/20 transform transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] group ${className}`}
+    className={`text-[#4da6a8] bg-[#1a1a1a] rounded-xl p-6 shadow-[5px_5px_15px_rgba(0,0,0,0.3),-5px_-5px_15px_rgba(77,166,168,0.1)] border border-[#4da6a8]/20 transform transition-all duration-300 hover:shadow-[0_0_20px_rgba(77,166,168,0.3)] group ${className}`}
   >
     {children}
   </div>
 );
 
 const CardHeader = ({ children }) => (
-  <div className="mb-4 p-2 rounded-lg shadow-[inset_-2px_-2px_8px_rgba(0,0,0,0.2),_inset_2px_2px_8px_rgba(0,255,255,0.1)]">
+  <div className="mb-4 p-2 rounded-lg shadow-[inset_-2px_-2px_8px_rgba(0,0,0,0.2),_inset_2px_2px_8px_rgba(77,166,168,0.1)]">
     {children}
   </div>
 );
 
 const CardTitle = ({ children }) => (
-  <h3 className="text-lg font-semibold text-cyan-400 drop-shadow-[0_0_5px_rgba(34,211,238,0.3)] group-hover:text-cyan-300 transition-colors duration-300">
+  <h3 className="text-lg font-semibold text-[#4da6a8] drop-shadow-[0_0_5px_rgba(77,166,168,0.3)] group-hover:text-[#3e8c8e] transition-colors duration-300">
     {children}
   </h3>
 );
 
 const CardContent = ({ children, className = "" }) => (
   <div
-    className={`${className} text-white group-hover:text-cyan-300 transition-colors duration-300`}
+    className={`${className} text-white group-hover:text-[#4da6a8] transition-colors duration-300`}
   >
     {children}
   </div>
@@ -86,16 +86,16 @@ const AnalyticsDashboard = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-[#001830]">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-cyan-400 border-t-transparent shadow-[0_0_15px_rgba(34,211,238,0.3)]"></div>
+      <div className="flex items-center justify-center h-screen bg-[#0f0f0f]">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#4da6a8] border-t-transparent shadow-[0_0_15px_rgba(77,166,168,0.3)]"></div>
       </div>
     );
   }
 
   if (!analyticsData) {
     return (
-      <div className="flex items-center justify-center h-screen bg-[#001830]">
-        <div className="text-cyan-400 p-6 bg-[#002345] rounded-xl shadow-[5px_5px_15px_rgba(0,0,0,0.3),-5px_-5px_15px_rgba(0,255,255,0.1)] border border-cyan-400/20">
+      <div className="flex items-center justify-center h-screen bg-[#0f0f0f]">
+        <div className="text-[#4da6a8] p-6 bg-[#1a1a1a] rounded-xl shadow-[5px_5px_15px_rgba(0,0,0,0.3),-5px_-5px_15px_rgba(77,166,168,0.1)] border border-[#4da6a8]/20">
           Error loading analytics data
         </div>
       </div>
@@ -105,24 +105,24 @@ const AnalyticsDashboard = () => {
   const chartConfig = {
     cartesianGrid: {
       strokeDasharray: "3 3",
-      stroke: "rgba(148, 236, 247, 0.1)",
+      stroke: "rgba(77, 166, 168, 0.1)",
     },
-    xAxis: { stroke: "#94ecf7", tick: { fill: "#94ecf7" } },
-    yAxis: { stroke: "#94ecf7", tick: { fill: "#94ecf7" } },
+    xAxis: { stroke: "#4da6a8", tick: { fill: "#4da6a8" } },
+    yAxis: { stroke: "#4da6a8", tick: { fill: "#4da6a8" } },
     tooltip: {
       contentStyle: {
-        backgroundColor: "#002345",
-        border: "1px solid rgba(148, 236, 247, 0.2)",
+        backgroundColor: "#1a1a1a",
+        border: "1px solid rgba(77, 166, 168, 0.2)",
         borderRadius: "8px",
-        color: "#94ecf7",
+        color: "#4da6a8",
       },
     },
   };
 
   return (
-    <div className="p-8 pt-28 space-y-8 bg-[#001830] min-h-screen">
+    <div className="p-8 pt-28 space-y-8 bg-[#0f0f0f] min-h-screen">
       {/* Dashboard Title */}
-      <h1 className="text-4xl font-bold text-cyan-400 mb-8 text-center drop-shadow-[0_0_8px_rgba(34,211,238,0.5)] hover:text-cyan-300 transition-colors duration-300">
+      <h1 className="text-4xl font-bold text-[#4da6a8] mb-8 text-center drop-shadow-[0_0_8px_rgba(77,166,168,0.5)] hover:text-[#3e8c8e] transition-colors duration-300">
         Incident Analytics Dashboard
       </h1>
 
@@ -146,7 +146,7 @@ const AnalyticsDashboard = () => {
                 />
                 <YAxis {...chartConfig.yAxis} />
                 <Tooltip {...chartConfig.tooltip} />
-                <Bar dataKey="count" fill="#94ecf7">
+                <Bar dataKey="count" fill="#4da6a8">
                   {analyticsData.incidents_by_type.map((entry, index) => (
                     <Cell
                       key={`cell-${index}`}
@@ -174,9 +174,9 @@ const AnalyticsDashboard = () => {
                 <Line
                   type="monotone"
                   dataKey="count"
-                  stroke="#00ffff"
+                  stroke="#4da6a8"
                   strokeWidth={2}
-                  dot={{ fill: "#00ffff" }}
+                  dot={{ fill: "#4da6a8" }}
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -209,17 +209,17 @@ const AnalyticsDashboard = () => {
                 </Pie>
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#002345",
-                    border: "1px solid rgba(0,255,255,0.2)",
-                    color: "cyan", // Doesn't affect text inside tooltip
+                    backgroundColor: "#1a1a1a",
+                    border: "1px solid rgba(77,166,168,0.2)",
+                    color: "#4da6a8",
                   }}
                   itemStyle={{
-                    color: "cyan", // This actually changes text color
+                    color: "#4da6a8",
                   }}
                 />
                 <Legend
                   formatter={(value) => (
-                    <span className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
+                    <span className="text-[#4da6a8] hover:text-[#3e8c8e] transition-colors duration-300">
                       {value}
                     </span>
                   )}
@@ -255,17 +255,17 @@ const AnalyticsDashboard = () => {
                 </Pie>
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#002345",
-                    border: "1px solid rgba(0,255,255,0.2)",
-                    color: "cyan", // Doesn't affect text inside tooltip
+                    backgroundColor: "#1a1a1a",
+                    border: "1px solid rgba(77,166,168,0.2)",
+                    color: "#4da6a8",
                   }}
                   itemStyle={{
-                    color: "cyan", // This actually changes text color
+                    color: "#4da6a8",
                   }}
                 />
                 <Legend
                   formatter={(value) => (
-                    <span className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
+                    <span className="text-[#4da6a8] hover:text-[#3e8c8e] transition-colors duration-300">
                       {value}
                     </span>
                   )}

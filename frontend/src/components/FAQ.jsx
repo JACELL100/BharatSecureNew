@@ -36,8 +36,8 @@ const FAQSection = () => {
   ];
 
   return (
-    <div className="py-12 bg-[#001a2f]">
-      <h2 className="text-[#00ffff] font-extrabold text-4xl lg:text-6xl tracking-wide mt-7 text-center mb-8 [text-shadow:_0_0_15px_rgba(0,255,255,0.5)] hover:[text-shadow:_0_0_20px_rgba(0,255,255,0.8)] transition-all duration-300">
+    <div className="py-12 bg-[#0f0f0f]">
+      <h2 className="text-[#4da6a8] font-extrabold text-4xl lg:text-6xl tracking-wide mt-7 text-center mb-8 drop-shadow-[0_0_15px_rgba(77,166,168,0.5)] hover:drop-shadow-[0_0_20px_rgba(77,166,168,0.8)] transition-all duration-300">
         Frequently Asked Questions
       </h2>
       <div className="max-w-4xl mx-auto px-4">
@@ -45,7 +45,7 @@ const FAQSection = () => {
           <div key={index} className="mb-6">
             <button
               onClick={() => toggleOpen(index)}
-              className="w-full text-left px-8 py-4 bg-[#002240] text-[#00ffff] border border-[#003366] rounded-xl shadow-[8px_8px_16px_#001527,_-8px_-8px_16px_#002f59] hover:shadow-[12px_12px_24px_#001527,_-12px_-12px_24px_#002f59,_0_0_20px_rgba(0,255,255,0.2)] transition-all duration-300 focus:outline-none hover:-translate-y-1"
+              className="w-full text-left px-8 py-4 bg-[#1a1a1a] text-[#4da6a8] border border-[#4da6a8]/30 rounded-xl hover:shadow-[0_0_20px_rgba(77,166,168,0.3)] transition-all duration-300 focus:outline-none hover:-translate-y-1"
             >
               <span className="text-base font-medium lg:text-lg">
                 {item.question}
@@ -56,7 +56,7 @@ const FAQSection = () => {
                 open === index ? "max-h-40" : "max-h-0"
               }`}
             >
-              <div className="px-8 py-5 bg-[#002240] text-[#80ffff] border border-t-0 border-[#003366] rounded-b-xl shadow-[inset_8px_8px_16px_#001527,_inset_-8px_-8px_16px_#002f59]">
+              <div className="px-8 py-5 bg-[#1a1a1a] text-gray-300 border border-t-0 border-[#4da6a8]/30 rounded-b-xl">
                 <p>{item.answer}</p>
               </div>
             </div>

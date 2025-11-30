@@ -5,7 +5,6 @@ import { Loader2, AlertTriangle, Wallet } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import Footer from "@/components/Footer";
 import FloatingChatbot from "@/components/FloatingChatbot";
-import { AnimatedBackground } from "animated-backgrounds";
 import LocationDisplay from "@/components/LocationDisplay";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -251,14 +250,12 @@ const RecentIncidents = () => {
   // If wallet is not connected, show connect screen
   if (!walletAddress) {
     return (
-      <div className="min-h-screen relative overflow-hidden">
-        <AnimatedBackground animationName="cosmicDust" blendMode="normal" />
-        
-        <div className="container mx-auto px-4 py-10 relative z-10 flex items-center justify-center min-h-screen">
-          <div className="max-w-md w-full bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-lg rounded-2xl p-8 shadow-[0_0_40px_rgba(34,211,238,0.3)] border border-cyan-400/20">
+      <div className="min-h-screen bg-[#0f0f0f]">
+        <div className="container mx-auto px-4 py-10 flex items-center justify-center min-h-screen">
+          <div className="max-w-md w-full bg-[#1a1a1a] rounded-2xl p-8 border border-[#4da6a8]">
             <div className="text-center mb-8">
-              <Wallet className="mx-auto mb-4 text-cyan-400" size={64} />
-              <h1 className="text-3xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
+              <Wallet className="mx-auto mb-4 text-[#4da6a8]" size={64} />
+              <h1 className="text-3xl font-extrabold text-[#4da6a8] mb-2">
                 Connect Your Wallet
               </h1>
               <p className="text-gray-400">
@@ -267,23 +264,16 @@ const RecentIncidents = () => {
             </div>
 
             {walletError && (
-              <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg flex items-start gap-3">
-                <AlertTriangle className="text-red-400 flex-shrink-0 mt-0.5" size={20} />
-                <p className="text-red-400 text-sm">{walletError}</p>
+              <div className="mb-6 p-4 bg-[#c85c5c]/20 border border-[#c85c5c]/30 rounded-lg flex items-start gap-3">
+                <AlertTriangle className="text-[#c85c5c] flex-shrink-0 mt-0.5" size={20} />
+                <p className="text-[#c85c5c] text-sm">{walletError}</p>
               </div>
             )}
 
             <button
               onClick={connectWallet}
               disabled={isConnecting}
-              className="w-full px-6 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl 
-                shadow-[0_0_20px_rgba(34,211,238,0.4)] 
-                hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] 
-                hover:from-cyan-400 hover:to-blue-400
-                transition-all duration-300
-                font-bold text-lg
-                disabled:opacity-50 disabled:cursor-not-allowed
-                flex items-center justify-center gap-3"
+              className="w-full px-6 py-4 bg-[#4da6a8] text-white rounded-xl font-bold text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
             >
               {isConnecting ? (
                 <>
@@ -305,7 +295,7 @@ const RecentIncidents = () => {
                   href="https://metamask.io/download/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cyan-400 hover:text-cyan-300 underline text-sm"
+                  className="text-[#4da6a8] hover:text-[#3e8c8e] underline text-sm"
                 >
                   Install MetaMask Extension
                 </a>
@@ -320,53 +310,39 @@ const RecentIncidents = () => {
   }
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      <AnimatedBackground animationName="cosmicDust" blendMode="normal" />
-
-      <div className="container mx-auto px-4 py-10 relative z-10">
+    <div className="min-h-screen bg-[#0f0f0f]">
+      <div className="container mx-auto px-4 py-10">
         {/* Wallet Info Bar */}
         <div className="flex justify-end mb-6">
-          <div className="bg-slate-800/90 backdrop-blur-sm rounded-xl px-4 py-2 border border-cyan-400/20 flex items-center gap-3">
-            <Wallet className="text-cyan-400" size={20} />
-            <span className="text-cyan-400 font-mono text-sm">
+          <div className="bg-[#1a1a1a] rounded-xl px-4 py-2 border border-[#4da6a8] flex items-center gap-3">
+            <Wallet className="text-[#4da6a8]" size={20} />
+            <span className="text-[#4da6a8] font-mono text-sm">
               {walletAddress.substring(0, 6)}...{walletAddress.substring(38)}
             </span>
             <button
               onClick={disconnectWallet}
-              className="text-red-400 hover:text-red-300 text-sm font-semibold transition-colors"
+              className="text-[#c85c5c] hover:text-[#b54c4c] text-sm font-semibold"
             >
               Disconnect
             </button>
           </div>
         </div>
 
-        <h1 className="text-center font-extrabold text-3xl sm:text-4xl lg:text-5xl mb-12 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]">
+        <h1 className="text-center font-extrabold text-3xl sm:text-4xl lg:text-5xl mb-12 text-[#4da6a8]">
           Recently Reported Incidents
         </h1>
 
         <div className="flex justify-center gap-4 mb-8 flex-wrap">
           <button
             onClick={handleLocationFilter}
-            className="px-6 py-3 bg-slate-800 text-cyan-400 rounded-xl 
-              shadow-[inset_-2px_-2px_4px_rgba(0,0,0,0.3),inset_2px_2px_4px_rgba(255,255,255,0.1)] 
-              hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] 
-              hover:text-cyan-300
-              transition-all duration-300
-              font-semibold
-              border border-cyan-400/20"
+            className="px-6 py-3 bg-[#1a1a1a] text-[#4da6a8] rounded-xl border border-[#4da6a8] font-semibold"
           >
             Filter by My Location
           </button>
 
           <button
             onClick={() => setIsMapModalOpen(true)}
-            className="px-6 py-3 bg-slate-800 text-cyan-400 rounded-xl 
-              shadow-[inset_-2px_-2px_4px_rgba(0,0,0,0.3),inset_2px_2px_4px_rgba(255,255,255,0.1)] 
-              hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] 
-              hover:text-cyan-300
-              transition-all duration-300
-              font-semibold
-              border border-cyan-400/20"
+            className="px-6 py-3 bg-[#1a1a1a] text-[#4da6a8] rounded-xl border border-[#4da6a8] font-semibold"
           >
             Pick Location on Map
           </button>
@@ -383,7 +359,7 @@ const RecentIncidents = () => {
               <div id="map" style={{ height: "400px" }} />
               <button
                 onClick={() => setIsMapModalOpen(false)}
-                className="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
+                className="mt-4 px-4 py-2 bg-[#c85c5c] text-white rounded-lg"
               >
                 Close
               </button>
@@ -394,24 +370,14 @@ const RecentIncidents = () => {
         {/* Loading State */}
         {loading && (
           <div className="flex justify-center items-center">
-            <Loader2 className="animate-spin text-cyan-400" size={48} />
+            <Loader2 className="animate-spin text-[#4da6a8]" size={48} />
           </div>
         )}
 
         {/* Error State */}
         {error && (
           <div className="flex justify-center items-center">
-            <div
-              className="
-              bg-[#2a2f4a] 
-              p-6 
-              rounded-xl 
-              shadow-lg 
-              flex 
-              items-center 
-              text-red-400
-            "
-            >
+            <div className="bg-[#2a2a2a] p-6 rounded-xl flex items-center text-[#c85c5c]">
               <AlertTriangle className="mr-3" />
               {error}
             </div>
@@ -420,19 +386,9 @@ const RecentIncidents = () => {
 
         {/* Incidents Grid */}
         {!loading && !error && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {incidents.length === 0 ? (
-              <div
-                className="
-                col-span-full 
-                text-center 
-                bg-[#2a2f4a] 
-                p-6 
-                rounded-xl 
-                text-gray-400
-                shadow-lg
-              "
-              >
+              <div className="col-span-full text-center bg-[#2a2a2a] p-6 rounded-xl text-gray-400">
                 No incidents reported yet.
               </div>
             ) : (
@@ -466,65 +422,40 @@ const IncidentCard = ({
   const statusConfig = {
     Resolved: {
       tag: "Completed",
-      bgGradient: "from-green-400/50 to-green-600/50",
-      textColor: "text-green-400",
-      borderColor: "border-green-600/50",
+      bgColor: "bg-[#4da6a8]/20",
+      textColor: "text-[#4da6a8]",
+      borderColor: "border-[#4da6a8]",
     },
     processing: {
       tag: "Ongoing",
-      bgGradient: "from-yellow-400/50 to-yellow-600/50",
-      textColor: "text-yellow-400",
-      borderColor: "border-yellow-600/50",
+      bgColor: "bg-[#d1a45b]/20",
+      textColor: "text-[#d1a45b]",
+      borderColor: "border-[#d1a45b]",
     },
     submitted: {
       tag: "Reported",
-      bgGradient: "from-red-400/50 to-red-600/50",
-      textColor: "text-red-400",
-      borderColor: "border-red-600/50",
+      bgColor: "bg-[#c85c5c]/20",
+      textColor: "text-[#c85c5c]",
+      borderColor: "border-[#c85c5c]",
     },
     default: {
       tag: "Unknown",
-      bgGradient: "from-gray-400/50 to-gray-600/50",
+      bgColor: "bg-gray-400/20",
       textColor: "text-gray-400",
-      borderColor: "border-gray-600/50",
+      borderColor: "border-gray-400",
     },
   };
 
   const status = statusConfig[incident.status] || statusConfig.default;
 
   return (
-    <div
-      className={`
-        relative
-        bg-gradient-to-br ${status.bgGradient}
-        border ${status.borderColor}
-        rounded-2xl 
-        p-6 
-        transform 
-        transition-all 
-        duration-300 
-        hover:scale-105 
-        hover:shadow-2xl
-        shadow-[0_10px_25px_rgba(8,_112,_184,_0.2)]
-        backdrop-blur-sm
-      `}
-    >
+    <div className={`relative ${status.bgColor} border ${status.borderColor} rounded-2xl p-6`}>
       {/* Incident Header */}
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-bold text-cyan-300">
+        <h2 className="text-xl font-bold text-[#4da6a8]">
           {incident.incidentType}
         </h2>
-        <span
-          className={`
-          px-3 py-1 
-          text-sm 
-          font-semibold 
-          rounded-full 
-          ${status.textColor} 
-          bg-[#1a2238]/50 
-          border ${status.borderColor}
-        `}
-        >
+        <span className={`px-3 py-1 text-sm font-semibold rounded-full ${status.textColor} bg-[#1a1a1a] border ${status.borderColor}`}>
           {status.tag}
         </span>
       </div>
@@ -541,25 +472,7 @@ const IncidentCard = ({
       {/* Comments Toggle */}
       <button
         onClick={() => toggleComments(incident.id)}
-        className={`
-          w-full 
-          flex 
-          items-center 
-          justify-center 
-          gap-2 
-          py-2 
-          rounded-lg 
-          bg-[#1a2238]/50 
-          text-cyan-400 
-          hover:bg-cyan-500/20 
-          transition-all 
-          duration-300
-          border 
-          border-cyan-500/30
-          hover:text-cyan-300
-          relative
-          z-20
-        `}
+        className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-[#1a1a1a] text-[#4da6a8] border border-[#4da6a8]"
       >
         <FaCommentDots />
         {openCommentSection[incident.id] ? "Hide Comments" : "View Comments"}
@@ -568,33 +481,15 @@ const IncidentCard = ({
       {/* Comments Section - Fixed Positioning */}
       {openCommentSection[incident.id] && (
         <div
-          className="
-            fixed 
-            inset-0 
-            bg-black/50 
-            z-50 
-            flex 
-            items-center 
-            justify-center 
-            p-4
-          "
+          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
           onClick={(e) => {
             if (e.target === e.currentTarget) {
               toggleComments(incident.id);
             }
           }}
         >
-          <div
-            className="
-              w-full 
-              max-w-md 
-              max-h-[80vh] 
-              overflow-y-auto
-            "
-          >
-            <Suspense
-              fallback={<p className="text-gray-500">Loading comments...</p>}
-            >
+          <div className="w-full max-w-md max-h-[80vh] overflow-y-auto">
+            <Suspense fallback={<p className="text-gray-500">Loading comments...</p>}>
               <CommentsSection
                 incident={incident}
                 setIncidents={setIncidents}
@@ -609,46 +504,29 @@ const IncidentCard = ({
 };
 
 const CommentsSection = ({ incident, setIncidents, onClose }) => (
-  <div
-    className="
-      bg-[#2a2f4a] 
-      rounded-lg 
-      p-4 
-      shadow-2xl 
-      border 
-      border-cyan-500/30
-      relative
-    "
-  >
+  <div className="bg-[#1a1a1a] rounded-lg p-4 border border-[#4da6a8] relative">
     <button
       onClick={onClose}
-      className="
-        absolute 
-        top-2 
-        right-2 
-        text-cyan-400 
-        hover:text-cyan-300 
-        z-10
-      "
+      className="absolute top-2 right-2 text-[#4da6a8] z-10"
     >
       ✕
     </button>
 
-    <h3 className="text-lg font-semibold text-cyan-400 border-b border-cyan-500/30 pb-2 pr-8">
+    <h3 className="text-lg font-semibold text-[#4da6a8] border-b border-[#4da6a8] pb-2 pr-8">
       Comments
     </h3>
 
     {incident.comments && incident.comments.length > 0 ? (
-      <ul className="space-y-3 max-h-64 overflow-y-auto scrollbar-thin scrollbar-track-[#1a2238] scrollbar-thumb-cyan-500/50 mt-4">
+      <ul className="space-y-3 max-h-64 overflow-y-auto mt-4">
         {incident.comments.map((comment, index) => (
           <li key={index} className="flex items-start gap-3">
             <img
               src="https://cdn.pfps.gg/pfps/2301-default-2.png"
               alt="Profile"
-              className="w-10 h-10 rounded-full border-2 border-cyan-500/30"
+              className="w-10 h-10 rounded-full border-2 border-[#4da6a8]"
             />
-            <div className="flex-1 bg-[#1a2238]/50 p-3 rounded-lg">
-              <p className="text-sm font-semibold text-cyan-400">
+            <div className="flex-1 bg-[#2a2a2a] p-3 rounded-lg">
+              <p className="text-sm font-semibold text-[#4da6a8]">
                 {comment.commented_by.first_name}{" "}
                 {comment.commented_by.last_name}
               </p>
@@ -662,9 +540,7 @@ const CommentsSection = ({ incident, setIncidents, onClose }) => (
     )}
 
     {/* Add Comment Form */}
-    <Suspense
-      fallback={<div className="text-gray-500 mt-4">Loading form...</div>}
-    >
+    <Suspense fallback={<div className="text-gray-500 mt-4">Loading form...</div>}>
       <AddCommentForm
         incidentId={incident.id}
         onAddComment={(newComment) => {

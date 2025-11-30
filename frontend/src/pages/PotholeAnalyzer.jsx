@@ -309,20 +309,20 @@ const PotholeAnalyzer = () => {
 
   const getSeverityColor = (severity) => {
     const colors = {
-      low: 'from-emerald-500 to-green-500',
-      medium: 'from-amber-500 to-yellow-500',
-      high: 'from-orange-500 to-red-500',
-      critical: 'from-red-600 to-rose-600',
+      low: 'from-[#4da6a8] to-[#3e8c8e]',
+      medium: 'from-[#d1a45b] to-[#b8934c]',
+      high: 'from-[#c85c5c] to-[#b05252]',
+      critical: 'from-[#c85c5c] to-[#a05050]',
     };
     return colors[severity] || colors.medium;
   };
 
   const getSeverityBadgeColor = (severity) => {
     const colors = {
-      low: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/50',
-      medium: 'bg-amber-500/20 text-amber-300 border-amber-500/50',
-      high: 'bg-orange-500/20 text-orange-300 border-orange-500/50',
-      critical: 'bg-red-500/20 text-red-300 border-red-500/50',
+      low: 'bg-[#4da6a8]/20 text-[#4da6a8] border-[#4da6a8]/50',
+      medium: 'bg-[#d1a45b]/20 text-[#d1a45b] border-[#d1a45b]/50',
+      high: 'bg-[#c85c5c]/20 text-[#c85c5c] border-[#c85c5c]/50',
+      critical: 'bg-[#c85c5c]/20 text-[#c85c5c] border-[#c85c5c]/50',
     };
     return colors[severity] || colors.medium;
   };
@@ -352,12 +352,12 @@ const PotholeAnalyzer = () => {
             max: 1.0,
             minOpacity: 0.5,
             gradient: {
-              0.0: '#00ff00',  // Low severity - Green
-              0.2: '#80ff00',  // Light green
-              0.4: '#ffff00',  // Medium - Yellow  
-              0.6: '#ffa500',  // Orange
-              0.8: '#ff4500',  // Red-orange
-              1.0: '#dc143c'   // Critical - Deep Red
+              0.0: '#4da6a8',  // Low severity - Primary accent
+              0.2: '#d1a45b',  // Medium severity
+              0.4: '#d1a45b',  // Medium - Yellow  
+              0.6: '#c85c5c',  // High severity
+              0.8: '#c85c5c',  // Red-orange
+              1.0: '#c85c5c'   // Critical - High severity
             }
           });
           
@@ -374,7 +374,7 @@ const PotholeAnalyzer = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-black">
+    <div className="min-h-screen bg-[#0f0f0f]">
       <div className="container mx-auto px-2 sm:px-4 py-6 sm:py-12">
         {/* Header Section */}
         <motion.div
@@ -382,7 +382,7 @@ const PotholeAnalyzer = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8 sm:mb-10 px-2"
         >
-          <h1 className="text-3xl sm:text-5xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-3 sm:mb-4 drop-shadow-[0_0_10px_cyan]">
+          <h1 className="text-3xl sm:text-5xl font-bold text-[#4da6a8] mb-3 sm:mb-4 drop-shadow-[0_0_10px_rgba(77,166,168,0.5)]">
             Pothole Analysis System
           </h1>
           <p className="text-gray-400 text-sm sm:text-lg max-w-lg sm:max-w-2xl mx-auto">
@@ -395,8 +395,8 @@ const PotholeAnalyzer = () => {
               onClick={() => setView('upload')}
               className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-200 ${
                 view === 'upload'
-                  ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/20'
-                  : 'bg-slate-800 text-gray-400 hover:bg-slate-700 border border-slate-700'
+                  ? 'bg-[#4da6a8] text-white shadow-lg shadow-[#4da6a8]/20'
+                  : 'bg-[#1a1a1a] text-gray-400 hover:bg-[#2a2a2a] border border-[#2a2a2a]'
               }`}
             >
               <Upload className="w-4 h-4 inline-block mr-2" />
@@ -406,8 +406,8 @@ const PotholeAnalyzer = () => {
               onClick={() => setView('history')}
               className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-200 ${
                 view === 'history'
-                  ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/20'
-                  : 'bg-slate-800 text-gray-400 hover:bg-slate-700 border border-slate-700'
+                  ? 'bg-[#4da6a8] text-white shadow-lg shadow-[#4da6a8]/20'
+                  : 'bg-[#1a1a1a] text-gray-400 hover:bg-[#2a2a2a] border border-[#2a2a2a]'
               }`}
             >
               <FileText className="w-4 h-4 inline-block mr-2" />
@@ -417,8 +417,8 @@ const PotholeAnalyzer = () => {
               onClick={() => setView('heatmap')}
               className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-200 ${
                 view === 'heatmap'
-                  ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/20'
-                  : 'bg-slate-800 text-gray-400 hover:bg-slate-700 border border-slate-700'
+                  ? 'bg-[#4da6a8] text-white shadow-lg shadow-[#4da6a8]/20'
+                  : 'bg-[#1a1a1a] text-gray-400 hover:bg-[#2a2a2a] border border-[#2a2a2a]'
               }`}
             >
               <Map className="w-4 h-4 inline-block mr-2" />
@@ -435,17 +435,17 @@ const PotholeAnalyzer = () => {
               animate={{ opacity: 1, x: 0 }}
               className="space-y-4 sm:space-y-6"
             >
-              <div className="bg-slate-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-cyan-500 transition-all duration-300 hover:shadow-[0_0_20px_cyan]">
+              <div className="bg-[#1a1a1a] rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-[#4da6a8] transition-all duration-300 hover:shadow-[0_0_20px_rgba(77,166,168,0.3)]">
                 <label className="text-gray-300 text-sm font-medium mb-3 block">
-                  <Camera className="w-4 h-4 inline-block mr-2 text-cyan-400" />
+                  <Camera className="w-4 h-4 inline-block mr-2 text-[#4da6a8]" />
                   Upload Pothole Image
                 </label>
                 
-                <div className="mt-1 flex justify-center px-2 sm:px-6 pt-4 sm:pt-5 pb-4 sm:pb-6 border-2 border-slate-700 border-dashed rounded-xl hover:border-cyan-400 transition-colors duration-200">
+                <div className="mt-1 flex justify-center px-2 sm:px-6 pt-4 sm:pt-5 pb-4 sm:pb-6 border-2 border-[#2a2a2a] border-dashed rounded-xl hover:border-[#4da6a8] transition-colors duration-200">
                   <div className="space-y-1 text-center w-full">
                     <Camera className="mx-auto h-10 w-10 sm:h-12 sm:w-12 text-gray-400" />
                     <div className="flex flex-col sm:flex-row items-center justify-center text-xs sm:text-sm text-gray-400 gap-1 sm:gap-0">
-                      <label className="relative cursor-pointer rounded-md font-medium text-cyan-400 hover:text-cyan-300">
+                      <label className="relative cursor-pointer rounded-md font-medium text-[#4da6a8] hover:text-[#3e8c8e]">
                         <span>Upload a file</span>
                         <input
                           type="file"
@@ -465,24 +465,24 @@ const PotholeAnalyzer = () => {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-slate-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-cyan-500 transition-all duration-300 hover:shadow-[0_0_20px_cyan]"
+                className="bg-[#1a1a1a] rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-[#4da6a8] transition-all duration-300 hover:shadow-[0_0_20px_rgba(77,166,168,0.3)]"
               >
                 <div className="flex items-center justify-between mb-4">
                   <label className="text-gray-300 text-sm font-medium flex items-center">
-                    <MapPin className="w-4 h-4 inline-block mr-2 text-cyan-400" />
+                    <MapPin className="w-4 h-4 inline-block mr-2 text-[#4da6a8]" />
                     Location Detection
                   </label>
                   <button
                     onClick={detectLocation}
                     disabled={locationLoading}
-                    className="text-cyan-400 hover:text-cyan-300 transition-colors p-1"
+                    className="text-[#4da6a8] hover:text-[#3e8c8e] transition-colors p-1"
                   >
                     <RefreshCw className={`w-4 h-4 ${locationLoading ? 'animate-spin' : ''}`} />
                   </button>
                 </div>
 
                 {locationLoading && (
-                  <div className="flex items-center gap-3 text-cyan-400 mb-3">
+                  <div className="flex items-center gap-3 text-[#4da6a8] mb-3">
                     <Navigation className="w-4 h-4 animate-pulse" />
                     <span className="text-sm">Detecting your location...</span>
                   </div>
@@ -490,9 +490,9 @@ const PotholeAnalyzer = () => {
 
                 {location && !locationLoading && (
                   <div className="space-y-3">
-                    <div className="bg-slate-800 rounded-lg p-3">
+                    <div className="bg-[#0f0f0f] rounded-lg p-3">
                       <div className="flex items-start gap-3">
-                        <MapPin className="w-4 h-4 text-green-400 mt-0.5" />
+                        <MapPin className="w-4 h-4 text-[#4da6a8] mt-0.5" />
                         <div className="flex-1 min-w-0">
                           <p className="text-sm text-gray-300 break-words">{location.address}</p>
                           <div className="flex flex-wrap gap-4 mt-2 text-xs text-gray-400">
@@ -511,7 +511,7 @@ const PotholeAnalyzer = () => {
                       href={`https://www.google.com/maps?q=${location.latitude},${location.longitude}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm transition-colors"
+                      className="flex items-center gap-2 text-[#4da6a8] hover:text-[#3e8c8e] text-sm transition-colors"
                     >
                       <Globe className="w-4 h-4" />
                       View on Google Maps
@@ -520,7 +520,7 @@ const PotholeAnalyzer = () => {
                 )}
 
                 {locationError && (
-                  <div className="text-yellow-400 text-sm mb-3 flex items-start gap-2">
+                  <div className="text-[#d1a45b] text-sm mb-3 flex items-start gap-2">
                     <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" />
                     <span>{locationError}</span>
                   </div>
@@ -536,7 +536,7 @@ const PotholeAnalyzer = () => {
                     value={manualLocation}
                     onChange={(e) => setManualLocation(e.target.value)}
                     placeholder="Enter location manually if needed..."
-                    className="w-full bg-slate-800 text-gray-200 px-3 py-2 rounded-lg border border-slate-700 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all duration-200 text-sm"
+                    className="w-full bg-[#0f0f0f] text-gray-200 px-3 py-2 rounded-lg border border-[#2a2a2a] focus:border-[#4da6a8] focus:ring-1 focus:ring-[#4da6a8] transition-all duration-200 text-sm"
                   />
                 </div>
               </motion.div>
@@ -545,7 +545,7 @@ const PotholeAnalyzer = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-slate-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-cyan-500 transition-all duration-300 hover:shadow-[0_0_20px_cyan]"
+                  className="bg-[#1a1a1a] rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-[#4da6a8] transition-all duration-300 hover:shadow-[0_0_20px_rgba(77,166,168,0.3)]"
                 >
                   <img
                     src={previewUrl}
@@ -557,7 +557,7 @@ const PotholeAnalyzer = () => {
                     whileTap={{ scale: 0.98 }}
                     onClick={handleUpload}
                     disabled={loading}
-                    className="w-full py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl font-medium shadow-lg hover:shadow-cyan-500/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full py-3 sm:py-4 bg-[#4da6a8] text-white rounded-xl font-medium shadow-lg hover:shadow-[#4da6a8]/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {loading ? 'Analyzing...' : 'Analyze Pothole'}
                   </motion.button>
@@ -568,7 +568,7 @@ const PotholeAnalyzer = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="bg-red-500/10 border border-red-500/50 text-red-300 px-4 py-3 rounded-xl"
+                  className="bg-[#c85c5c]/10 border border-[#c85c5c]/50 text-[#c85c5c] px-4 py-3 rounded-xl"
                 >
                   <AlertTriangle className="w-4 h-4 inline-block mr-2" />
                   {error}
@@ -580,7 +580,7 @@ const PotholeAnalyzer = () => {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-slate-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-cyan-500 transition-all duration-300 hover:shadow-[0_0_20px_cyan]"
+              className="bg-[#1a1a1a] rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-[#4da6a8] transition-all duration-300 hover:shadow-[0_0_20px_rgba(77,166,168,0.3)]"
             >
               {analysis ? (
                 <div className="space-y-4 sm:space-y-6">
@@ -594,58 +594,58 @@ const PotholeAnalyzer = () => {
                   </div>
 
                   <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                    <div className="bg-slate-800 p-3 sm:p-4 rounded-xl border border-slate-700">
+                    <div className="bg-[#0f0f0f] p-3 sm:p-4 rounded-xl border border-[#2a2a2a]">
                       <span className="text-xs sm:text-sm text-gray-400 block mb-1">Dimensions</span>
-                      <span className="text-base sm:text-lg font-semibold text-cyan-400">
+                      <span className="text-base sm:text-lg font-semibold text-[#4da6a8]">
                         {analysis.width_cm} × {analysis.height_cm} cm
                       </span>
                     </div>
 
-                    <div className="bg-slate-800 p-3 sm:p-4 rounded-xl border border-slate-700">
+                    <div className="bg-[#0f0f0f] p-3 sm:p-4 rounded-xl border border-[#2a2a2a]">
                       <span className="text-xs sm:text-sm text-gray-400 block mb-1">Area</span>
-                      <span className="text-base sm:text-lg font-semibold text-cyan-400">
+                      <span className="text-base sm:text-lg font-semibold text-[#4da6a8]">
                         {analysis.area_cm2} cm²
                       </span>
                     </div>
 
-                    <div className="bg-slate-800 p-3 sm:p-4 rounded-xl border border-slate-700">
+                    <div className="bg-[#0f0f0f] p-3 sm:p-4 rounded-xl border border-[#2a2a2a]">
                       <span className="text-xs sm:text-sm text-gray-400 block mb-1">Est. Depth</span>
-                      <span className="text-base sm:text-lg font-semibold text-cyan-400">
+                      <span className="text-base sm:text-lg font-semibold text-[#4da6a8]">
                         ~{analysis.depth_estimate} cm
                       </span>
                     </div>
 
-                    <div className="bg-slate-800 p-3 sm:p-4 rounded-xl border border-slate-700">
+                    <div className="bg-[#0f0f0f] p-3 sm:p-4 rounded-xl border border-[#2a2a2a]">
                       <span className="text-xs sm:text-sm text-gray-400 block mb-1">Perimeter</span>
-                      <span className="text-base sm:text-lg font-semibold text-cyan-400">
+                      <span className="text-base sm:text-lg font-semibold text-[#4da6a8]">
                         {analysis.perimeter_cm} cm
                       </span>
                     </div>
 
-                    <div className="bg-slate-800 p-3 sm:p-4 rounded-xl border border-slate-700">
+                    <div className="bg-[#0f0f0f] p-3 sm:p-4 rounded-xl border border-[#2a2a2a]">
                       <span className="text-xs sm:text-sm text-gray-400 block mb-1">Impact Score</span>
-                      <span className="text-base sm:text-lg font-semibold text-cyan-400">
+                      <span className="text-base sm:text-lg font-semibold text-[#4da6a8]">
                         {analysis.impact_score}/10
                       </span>
                     </div>
 
-                    <div className="bg-slate-800 p-3 sm:p-4 rounded-xl border border-slate-700">
+                    <div className="bg-[#0f0f0f] p-3 sm:p-4 rounded-xl border border-[#2a2a2a]">
                       <span className="text-xs sm:text-sm text-gray-400 block mb-1">Priority</span>
-                      <span className="text-base sm:text-lg font-semibold text-cyan-400">
+                      <span className="text-base sm:text-lg font-semibold text-[#4da6a8]">
                         Level {analysis.repair_priority}/5
                       </span>
                     </div>
 
-                    <div className="bg-slate-800 p-3 sm:p-4 rounded-xl border border-slate-700">
+                    <div className="bg-[#0f0f0f] p-3 sm:p-4 rounded-xl border border-[#2a2a2a]">
                       <span className="text-xs sm:text-sm text-gray-400 block mb-1">Repair Cost</span>
-                      <span className="text-base sm:text-lg font-semibold text-green-400">
+                      <span className="text-base sm:text-lg font-semibold text-[#4da6a8]">
                         ${analysis.estimated_repair_cost}
                       </span>
                     </div>
 
-                    <div className="bg-slate-800 p-3 sm:p-4 rounded-xl border border-slate-700">
+                    <div className="bg-[#0f0f0f] p-3 sm:p-4 rounded-xl border border-[#2a2a2a]">
                       <span className="text-xs sm:text-sm text-gray-400 block mb-1">Confidence</span>
-                      <span className="text-base sm:text-lg font-semibold text-cyan-400">
+                      <span className="text-base sm:text-lg font-semibold text-[#4da6a8]">
                         {(analysis.confidence_score * 100).toFixed(0)}%
                       </span>
                     </div>
@@ -655,10 +655,10 @@ const PotholeAnalyzer = () => {
                   {(analysis.latitude && analysis.longitude) && (
                     <div className="space-y-3">
                       <h3 className="text-lg sm:text-xl font-semibold text-white flex items-center gap-2">
-                        <MapPin className="w-5 h-5 text-cyan-400" />
+                        <MapPin className="w-5 h-5 text-[#4da6a8]" />
                         Pothole Location
                       </h3>
-                      <div className="bg-slate-800 rounded-xl p-4 border border-slate-700">
+                      <div className="bg-[#0f0f0f] rounded-xl p-4 border border-[#2a2a2a]">
                         <div className="space-y-3">
                           {analysis.location && (
                             <p className="text-gray-300 text-sm">{analysis.location}</p>
@@ -674,7 +674,7 @@ const PotholeAnalyzer = () => {
                               href={`https://www.google.com/maps?q=${analysis.latitude},${analysis.longitude}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-lg transition-colors"
+                              className="inline-flex items-center gap-2 px-3 py-2 bg-[#4da6a8] hover:bg-[#3e8c8e] text-white text-sm rounded-lg transition-colors"
                             >
                               <Globe className="w-4 h-4" />
                               View on Google Maps
@@ -683,7 +683,7 @@ const PotholeAnalyzer = () => {
                               href={`https://www.openstreetmap.org/?mlat=${analysis.latitude}&mlon=${analysis.longitude}&zoom=18`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-3 py-2 bg-green-600 hover:bg-green-700 text-white text-sm rounded-lg transition-colors"
+                              className="inline-flex items-center gap-2 px-3 py-2 bg-[#4da6a8] hover:bg-[#3e8c8e] text-white text-sm rounded-lg transition-colors"
                             >
                               <MapPin className="w-4 h-4" />
                               OpenStreetMap
@@ -700,7 +700,7 @@ const PotholeAnalyzer = () => {
                               marginHeight="0"
                               marginWidth="0"
                               src={`https://www.openstreetmap.org/export/embed.html?bbox=${parseFloat(analysis.longitude)-0.01},${parseFloat(analysis.latitude)-0.01},${parseFloat(analysis.longitude)+0.01},${parseFloat(analysis.latitude)+0.01}&layer=mapnik&marker=${analysis.latitude},${analysis.longitude}`}
-                              className="rounded-lg border border-slate-600"
+                              className="rounded-lg border border-[#2a2a2a]"
                             />
                             <p className="text-xs text-gray-500 mt-2">
                               📍 Pothole detected at this location
@@ -717,7 +717,7 @@ const PotholeAnalyzer = () => {
                       <img
                         src={analysis.processed_image_url}
                         alt="Processed"
-                        className="w-full rounded-lg border border-cyan-500/30"
+                        className="w-full rounded-lg border border-[#4da6a8]/30"
                       />
                     </div>
                   )}
@@ -737,12 +737,12 @@ const PotholeAnalyzer = () => {
             className="max-w-7xl mx-auto space-y-6"
           >
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#4da6a8]">
                 Analysis History
               </h2>
               <button
                 onClick={fetchAnalyses}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-gray-300 font-medium rounded-xl border border-slate-700 transition-colors duration-200 flex items-center gap-2"
+                className="px-4 py-2 bg-[#1a1a1a] hover:bg-[#2a2a2a] text-gray-300 font-medium rounded-xl border border-[#2a2a2a] transition-colors duration-200 flex items-center gap-2"
               >
                 <RefreshCw className="w-4 h-4" />
                 Refresh
@@ -750,7 +750,7 @@ const PotholeAnalyzer = () => {
             </div>
 
             {analyses.length === 0 ? (
-              <div className="bg-slate-900 rounded-xl sm:rounded-2xl p-16 text-center border border-cyan-500">
+              <div className="bg-[#1a1a1a] rounded-xl sm:rounded-2xl p-16 text-center border border-[#4da6a8]">
                 <FileText className="w-16 h-16 text-gray-600 mx-auto mb-4" />
                 <p className="text-gray-400">No analyses yet. Upload your first pothole image!</p>
               </div>
@@ -762,7 +762,7 @@ const PotholeAnalyzer = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     whileHover={{ scale: 1.02 }}
-                    className="bg-slate-900 rounded-xl overflow-hidden border border-cyan-500/30 hover:border-cyan-500 transition-all duration-300 hover:shadow-[0_0_15px_rgba(6,182,212,0.3)] cursor-pointer"
+                    className="bg-[#1a1a1a] rounded-xl overflow-hidden border border-[#4da6a8]/30 hover:border-[#4da6a8] transition-all duration-300 hover:shadow-[0_0_15px_rgba(77,166,168,0.3)] cursor-pointer"
                     onClick={() => {
                       setAnalysis(item);
                       setView('upload');
@@ -790,12 +790,12 @@ const PotholeAnalyzer = () => {
                         </div>
                         <div className="flex justify-between text-gray-300">
                           <span className="text-gray-400">Cost:</span>
-                          <span className="font-semibold text-green-400">
+                          <span className="font-semibold text-[#4da6a8]">
                             ${item.estimated_repair_cost}
                           </span>
                         </div>
                         {(item.latitude && item.longitude) && (
-                          <div className="flex items-center gap-1 text-cyan-400 text-xs">
+                          <div className="flex items-center gap-1 text-[#4da6a8] text-xs">
                             <MapPin className="w-3 h-3" />
                             <span className="truncate">
                               {parseFloat(item.latitude).toFixed(4)}, {parseFloat(item.longitude).toFixed(4)}
@@ -803,7 +803,7 @@ const PotholeAnalyzer = () => {
                           </div>
                         )}
                       </div>
-                      <div className="flex justify-between items-center pt-3 border-t border-slate-800">
+                      <div className="flex justify-between items-center pt-3 border-t border-[#2a2a2a]">
                         <span className="text-xs text-gray-500">
                           {new Date(item.created_at).toLocaleDateString()}
                         </span>
@@ -812,7 +812,7 @@ const PotholeAnalyzer = () => {
                             e.stopPropagation();
                             deleteAnalysis(item.id);
                           }}
-                          className="text-red-400 hover:text-red-300 transition-colors"
+                          className="text-[#c85c5c] hover:text-[#b05252] transition-colors"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -830,14 +830,14 @@ const PotholeAnalyzer = () => {
             className="max-w-7xl mx-auto space-y-6"
           >
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#4da6a8]">
                 Pothole Heatmap
               </h2>
               <div className="flex gap-2">
                 <button
                   onClick={fetchHeatmapData}
                   disabled={heatmapLoading}
-                  className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-gray-300 font-medium rounded-xl border border-slate-700 transition-colors duration-200 flex items-center gap-2"
+                  className="px-4 py-2 bg-[#1a1a1a] hover:bg-[#2a2a2a] text-gray-300 font-medium rounded-xl border border-[#2a2a2a] transition-colors duration-200 flex items-center gap-2"
                 >
                   <RefreshCw className={`w-4 h-4 ${heatmapLoading ? 'animate-spin' : ''}`} />
                   {heatmapLoading ? 'Loading...' : 'Refresh'}
@@ -847,24 +847,24 @@ const PotholeAnalyzer = () => {
 
             {/* Heatmap Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-              <div className="bg-slate-900 rounded-xl p-4 border border-cyan-500/30">
-                <div className="text-2xl font-bold text-cyan-400">{heatmapData.length}</div>
+              <div className="bg-[#1a1a1a] rounded-xl p-4 border border-[#4da6a8]/30">
+                <div className="text-2xl font-bold text-[#4da6a8]">{heatmapData.length}</div>
                 <div className="text-gray-400 text-sm">Total Potholes</div>
               </div>
-              <div className="bg-slate-900 rounded-xl p-4 border border-emerald-500/30">
-                <div className="text-2xl font-bold text-emerald-400">
+              <div className="bg-[#1a1a1a] rounded-xl p-4 border border-[#4da6a8]/30">
+                <div className="text-2xl font-bold text-[#4da6a8]">
                   {heatmapData.filter(point => point[2] <= 0.4).length}
                 </div>
                 <div className="text-gray-400 text-sm">Low Severity</div>
               </div>
-              <div className="bg-slate-900 rounded-xl p-4 border border-orange-500/30">
-                <div className="text-2xl font-bold text-orange-400">
+              <div className="bg-[#1a1a1a] rounded-xl p-4 border border-[#d1a45b]/30">
+                <div className="text-2xl font-bold text-[#d1a45b]">
                   {heatmapData.filter(point => point[2] > 0.4 && point[2] <= 0.8).length}
                 </div>
                 <div className="text-gray-400 text-sm">High Severity</div>
               </div>
-              <div className="bg-slate-900 rounded-xl p-4 border border-red-500/30">
-                <div className="text-2xl font-bold text-red-400">
+              <div className="bg-[#1a1a1a] rounded-xl p-4 border border-[#c85c5c]/30">
+                <div className="text-2xl font-bold text-[#c85c5c]">
                   {heatmapData.filter(point => point[2] > 0.8).length}
                 </div>
                 <div className="text-gray-400 text-sm">Critical</div>
@@ -872,7 +872,7 @@ const PotholeAnalyzer = () => {
             </div>
 
             {/* Heatmap Container */}
-            <div className="bg-slate-900 rounded-xl p-6 border border-cyan-500/30">
+            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#4da6a8]/30">
               <div className="mb-4">
                 <h3 className="text-lg font-semibold text-white mb-2">Interactive Heatmap</h3>
                 <p className="text-gray-400 text-sm">
@@ -881,14 +881,14 @@ const PotholeAnalyzer = () => {
               </div>
 
               {heatmapLoading ? (
-                <div className="flex items-center justify-center h-96 bg-slate-800 rounded-lg">
+                <div className="flex items-center justify-center h-96 bg-[#0f0f0f] rounded-lg">
                   <div className="flex items-center gap-3">
-                    <RefreshCw className="w-6 h-6 animate-spin text-cyan-400" />
+                    <RefreshCw className="w-6 h-6 animate-spin text-[#4da6a8]" />
                     <span className="text-gray-300">Loading heatmap data...</span>
                   </div>
                 </div>
               ) : heatmapData.length === 0 ? (
-                <div className="flex items-center justify-center h-96 bg-slate-800 rounded-lg">
+                <div className="flex items-center justify-center h-96 bg-[#0f0f0f] rounded-lg">
                   <div className="text-center">
                     <Map className="w-16 h-16 text-gray-600 mx-auto mb-4" />
                     <p className="text-gray-400">No pothole data available for heatmap</p>
@@ -896,7 +896,7 @@ const PotholeAnalyzer = () => {
                   </div>
                 </div>
               ) : (
-                <div className="h-96 rounded-lg overflow-hidden border border-slate-700">
+                <div className="h-96 rounded-lg overflow-hidden border border-[#2a2a2a]">
                   <MapContainer
                     center={heatmapData.length > 0 ? [heatmapData[0][0], heatmapData[0][1]] : [28.6139, 77.2090]}
                     zoom={12}
@@ -915,19 +915,19 @@ const PotholeAnalyzer = () => {
               {/* Legend */}
               <div className="mt-4 flex flex-wrap gap-4 text-sm">
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded bg-green-500"></div>
+                  <div className="w-4 h-4 rounded bg-[#4da6a8]"></div>
                   <span className="text-gray-400">Low Severity</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded bg-yellow-500"></div>
+                  <div className="w-4 h-4 rounded bg-[#d1a45b]"></div>
                   <span className="text-gray-400">Medium Severity</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded bg-orange-500"></div>
+                  <div className="w-4 h-4 rounded bg-[#c85c5c]"></div>
                   <span className="text-gray-400">High Severity</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded bg-red-500"></div>
+                  <div className="w-4 h-4 rounded bg-[#c85c5c]"></div>
                   <span className="text-gray-400">Critical Severity</span>
                 </div>
               </div>

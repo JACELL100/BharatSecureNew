@@ -90,11 +90,11 @@ const Chatbot = () => {
   return (
     <PageTransition>
       <>
-        <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-black">
+        <div className="min-h-screen bg-[#0f0f0f]">
           <div className="container mx-auto px-1 lg:py-12">
             {/* Header Section */}
             <div className="text-center mb-8 lg:mb-10">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-4 drop-shadow-[0_0_10px_cyan]">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#4da6a8] mb-4">
                 🔵 Saathi AI
               </h1>
               <p className="text-sm sm:text-lg text-gray-400 max-w-2xl mx-auto px-2">
@@ -105,15 +105,15 @@ const Chatbot = () => {
 
             {/* Chatbot Container */}
             <div className="max-w-4xl mx-auto">
-              <div className="bg-slate-900 rounded-2xl p-4 sm:p-6 lg:p-8 border border-cyan-500 shadow-[0_0_10px_cyan]">
-                <h2 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent text-center mb-6">
+              <div className="bg-[#1a1a1a] rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#4da6a8]">
+                <h2 className="text-xl sm:text-2xl font-bold text-[#4da6a8] text-center mb-6">
                   💬 Chat with Saathi AI
                 </h2>
 
                 {/* Chat Display */}
                 <div
                   ref={chatContainerRef}
-                  className="h-64 sm:h-80 lg:h-96 overflow-y-auto rounded-xl p-3 sm:p-4 bg-slate-800 border border-slate-700 mb-6 scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800"
+                  className="h-64 sm:h-80 lg:h-96 overflow-y-auto rounded-xl p-3 sm:p-4 bg-[#2a2a2a] border border-[#333] mb-6"
                 >
                   {chatHistory.length === 0 ? (
                     <div className="flex items-center justify-center h-full">
@@ -143,8 +143,8 @@ const Chatbot = () => {
                             <div
                               className={`max-w-[85%] sm:max-w-[80%] lg:max-w-[75%] p-3 sm:p-4 text-sm sm:text-base break-words rounded-xl ${
                                 message.startsWith("User:")
-                                  ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-br-sm"
-                                  : "bg-gradient-to-r from-slate-700 to-slate-600 text-white rounded-bl-sm"
+                                  ? "bg-[#4da6a8] text-white rounded-br-sm"
+                                  : "bg-[#333] text-white rounded-bl-sm"
                               }`}
                             >
                               {parts.map((part, partIndex) => {
@@ -192,18 +192,12 @@ const Chatbot = () => {
                   {/* Loading Animation */}
                   {loading && (
                     <div className="flex justify-start">
-                      <div className="max-w-[75%] p-4 bg-gradient-to-r from-slate-700 to-slate-600 rounded-xl rounded-bl-sm">
+                      <div className="max-w-[75%] p-4 bg-[#333] rounded-xl rounded-bl-sm">
                         <div className="flex items-center space-x-2">
                           <div className="flex space-x-1">
-                            <div className="h-2 w-2 bg-cyan-400 rounded-full animate-bounce"></div>
-                            <div
-                              className="h-2 w-2 bg-cyan-400 rounded-full animate-bounce"
-                              style={{ animationDelay: "0.1s" }}
-                            ></div>
-                            <div
-                              className="h-2 w-2 bg-cyan-400 rounded-full animate-bounce"
-                              style={{ animationDelay: "0.2s" }}
-                            ></div>
+                            <div className="h-2 w-2 bg-[#4da6a8] rounded-full"></div>
+                            <div className="h-2 w-2 bg-[#4da6a8] rounded-full"></div>
+                            <div className="h-2 w-2 bg-[#4da6a8] rounded-full"></div>
                           </div>
                           <span className="text-gray-300 text-sm">
                             Saathi AI is thinking...
@@ -223,17 +217,17 @@ const Chatbot = () => {
                       onChange={(e) => setUserInput(e.target.value)}
                       onKeyDown={handleKeyDown}
                       placeholder="Type your message..."
-                      className="flex-1 bg-slate-800 text-gray-100 px-3 sm:px-4 py-2 sm:py-3 rounded-xl border border-slate-700 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all duration-200 text-sm sm:text-base placeholder-gray-400"
+                      className="flex-1 bg-[#2a2a2a] text-gray-100 px-3 sm:px-4 py-2 sm:py-3 rounded-xl border border-[#333] focus:border-[#4da6a8] text-sm sm:text-base placeholder-gray-400"
                       disabled={loading}
                     />
 
                     {/* Voice Input Button */}
                     <button
                       onClick={handleVoiceInput}
-                      className={`px-3 py-2 sm:py-3 rounded-xl font-medium transition-all duration-200 flex items-center justify-center min-w-[44px] ${
+                      className={`px-3 py-2 sm:py-3 rounded-xl font-medium flex items-center justify-center min-w-[44px] ${
                         micClick
-                          ? "bg-green-600 hover:bg-green-700 text-white"
-                          : "bg-slate-700 hover:bg-slate-600 text-gray-300"
+                          ? "bg-[#4da6a8] text-white"
+                          : "bg-[#333] text-gray-300"
                       }`}
                       disabled={loading}
                     >
@@ -244,10 +238,10 @@ const Chatbot = () => {
                   {/* Send Button */}
                   <button
                     onClick={sendMessage}
-                    className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-200 text-sm sm:text-base whitespace-nowrap ${
+                    className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium text-sm sm:text-base whitespace-nowrap ${
                       loading
-                        ? "bg-slate-700 text-gray-400 cursor-not-allowed"
-                        : "bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:shadow-cyan-500/20"
+                        ? "bg-[#333] text-gray-400 cursor-not-allowed"
+                        : "bg-[#4da6a8] text-white"
                     }`}
                     disabled={loading}
                   >
@@ -263,8 +257,8 @@ const Chatbot = () => {
                 </div>
               </div>
               {/* Disclaimer */}
-              <div className="mt-6 mx-auto max-w-2xl p-4 rounded-xl bg-slate-900/50 border border-blue-500/30">
-                <p className="text-blue-200 text-sm sm:text-base">
+              <div className="mt-6 mx-auto max-w-2xl p-4 rounded-xl bg-[#1a1a1a] border border-[#4da6a8]">
+                <p className="text-[#8db8b9] text-sm sm:text-base">
                   ⚠️ <strong>Disclaimer:</strong> Saathi AI offers general legal
                   and safety information, but it is <strong>not</strong> a
                   substitute for professional legal counsel. Please consult a
@@ -275,25 +269,25 @@ const Chatbot = () => {
 
             {/* Tips Section */}
             <div className="max-w-4xl mx-auto mt-8">
-              <div className="bg-slate-900/50 rounded-2xl p-4 sm:p-6 border border-slate-700">
+              <div className="bg-[#1a1a1a] rounded-2xl p-4 sm:p-6 border border-[#333]">
                 <h4 className="text-lg font-semibold text-white mb-3 text-center sm:text-left">
                   💡 Chat Tips
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-400 text-sm">
                   <div className="flex items-start gap-2">
-                    <span className="text-cyan-400 mt-1">•</span>
+                    <span className="text-[#4da6a8] mt-1">•</span>
                     <span>Ask about legal rights and safety measures</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-cyan-400 mt-1">•</span>
+                    <span className="text-[#4da6a8] mt-1">•</span>
                     <span>Use voice input for hands-free interaction</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-cyan-400 mt-1">•</span>
+                    <span className="text-[#4da6a8] mt-1">•</span>
                     <span>Get emotional support and guidance</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-cyan-400 mt-1">•</span>
+                    <span className="text-[#4da6a8] mt-1">•</span>
                     <span>Press Enter to send messages quickly</span>
                   </div>
                 </div>

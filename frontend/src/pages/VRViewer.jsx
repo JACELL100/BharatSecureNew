@@ -191,7 +191,7 @@ const VRViewer = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-black flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-black flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -200,7 +200,7 @@ const VRViewer = () => {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            className="w-16 h-16 border-4 border-cyan-400 border-t-transparent rounded-full mx-auto mb-4"
+            className="w-16 h-16 border-4 border-[#4da6a8] border-t-transparent rounded-full mx-auto mb-4"
           />
           <h2 className="text-2xl font-bold text-white mb-2">Loading VR Experience</h2>
           <p className="text-gray-400">Preparing your immersive view...</p>
@@ -211,22 +211,22 @@ const VRViewer = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-black flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-black flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-red-900/20 border border-red-500/50 rounded-2xl p-8 text-center max-w-md"
+          className="bg-[#c85c5c]/20 border border-[#c85c5c]/50 rounded-2xl p-8 text-center max-w-md"
         >
-          <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-16 h-16 bg-[#c85c5c]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-[#c85c5c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 className="text-xl font-bold text-red-400 mb-2">Error</h3>
+          <h3 className="text-xl font-bold text-[#c85c5c] mb-2">Error</h3>
           <p className="text-gray-300 mb-6">{error}</p>
           <Link 
             to="/photos"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 text-white rounded-xl hover:bg-cyan-600 transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#4da6a8] text-white rounded-xl hover:bg-[#3e8c8e] transition-colors duration-200"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Photos
@@ -237,19 +237,19 @@ const VRViewer = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-black relative">
+    <div className="min-h-screen bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-black relative">
       {/* Header Controls */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="absolute top-0 left-0 right-0 z-20 bg-slate-900/90 backdrop-blur-sm border-b border-slate-700"
+        className="absolute top-0 left-0 right-0 z-20 bg-[#1a1a1a]/90 backdrop-blur-sm border-b border-[#333]"
       >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link 
                 to="/photos"
-                className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-gray-300 hover:text-white rounded-xl transition-colors duration-200 border border-slate-600"
+                className="flex items-center gap-2 px-4 py-2 bg-[#2a2a2a] hover:bg-[#333] text-gray-300 hover:text-white rounded-xl transition-colors duration-200 border border-[#444]"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Back
@@ -265,21 +265,21 @@ const VRViewer = () => {
             <div className="flex items-center gap-2">
               <button
                 onClick={resetView}
-                className="p-2 bg-slate-800 hover:bg-slate-700 text-gray-300 hover:text-white rounded-xl transition-colors duration-200 border border-slate-600"
+                className="p-2 bg-[#2a2a2a] hover:bg-[#333] text-gray-300 hover:text-white rounded-xl transition-colors duration-200 border border-[#444]"
                 title="Reset View"
               >
                 <RotateCcw className="w-5 h-5" />
               </button>
               <button
                 onClick={toggleFullscreen}
-                className="p-2 bg-slate-800 hover:bg-slate-700 text-gray-300 hover:text-white rounded-xl transition-colors duration-200 border border-slate-600"
+                className="p-2 bg-[#2a2a2a] hover:bg-[#333] text-gray-300 hover:text-white rounded-xl transition-colors duration-200 border border-[#444]"
                 title="Toggle Fullscreen"
               >
                 <Maximize className="w-5 h-5" />
               </button>
               <button
                 onClick={() => setShowInstructions(!showInstructions)}
-                className="p-2 bg-slate-800 hover:bg-slate-700 text-gray-300 hover:text-white rounded-xl transition-colors duration-200 border border-slate-600"
+                className="p-2 bg-[#2a2a2a] hover:bg-[#333] text-gray-300 hover:text-white rounded-xl transition-colors duration-200 border border-[#444]"
                 title="Toggle Instructions"
               >
                 <Info className="w-5 h-5" />
@@ -307,33 +307,33 @@ const VRViewer = () => {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-slate-900/95 border border-cyan-500 rounded-2xl p-8 max-w-md mx-4 shadow-[0_0_20px_cyan] text-center"
+            className="bg-[#1a1a1a]/95 border border-[#4da6a8] rounded-2xl p-8 max-w-md mx-4 shadow-[0_0_20px_#4da6a8] text-center"
           >
-            <div className="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Navigation className="w-8 h-8 text-cyan-400" />
+            <div className="w-16 h-16 bg-[#4da6a8]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Navigation className="w-8 h-8 text-[#4da6a8]" />
             </div>
             <h3 className="text-2xl font-bold text-white mb-4">VR Navigation</h3>
             <div className="text-gray-300 space-y-3 text-left">
               <div className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">•</span>
+                <span className="text-[#4da6a8] mt-1">•</span>
                 <span><strong>Click & Drag:</strong> Look around in 360°</span>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">•</span>
+                <span className="text-[#4da6a8] mt-1">•</span>
                 <span><strong>Touch & Swipe:</strong> Navigate on mobile</span>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">•</span>
+                <span className="text-[#4da6a8] mt-1">•</span>
                 <span><strong>Mouse Wheel:</strong> Zoom in and out</span>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">•</span>
+                <span className="text-[#4da6a8] mt-1">•</span>
                 <span><strong>Reset Button:</strong> Return to center view</span>
               </div>
             </div>
             <button
               onClick={() => setShowInstructions(false)}
-              className="mt-6 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl font-medium hover:shadow-cyan-500/20 transition-all duration-200"
+              className="mt-6 px-6 py-3 bg-gradient-to-r from-[#4da6a8] to-[#3e8c8e] text-white rounded-xl font-medium hover:shadow-[#4da6a8]/20 transition-all duration-200"
             >
               Start Exploring
             </button>
@@ -347,14 +347,14 @@ const VRViewer = () => {
         animate={{ opacity: 1, y: 0 }}
         className="absolute bottom-4 left-4 right-4 z-10"
       >
-        <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl border border-slate-700 px-4 py-3">
+        <div className="bg-[#1a1a1a]/90 backdrop-blur-sm rounded-xl border border-[#333] px-4 py-3">
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 text-gray-300">
-                <Eye className="w-4 h-4 text-cyan-400" />
+                <Eye className="w-4 h-4 text-[#4da6a8]" />
                 <span>VR Mode Active</span>
               </div>
-              <div className="w-px h-4 bg-slate-600" />
+              <div className="w-px h-4 bg-[#333]" />
               <div className="text-gray-400">
                 Uploaded: {new Date(photo?.uploaded_at).toLocaleDateString()}
               </div>

@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-// import { FaMicrophone } from "react-icons/fa";
 import { Mic, Send, Repeat, StopCircle } from "lucide-react";
 import axios from "axios";
 import { BarLoader } from "react-spinners";
@@ -9,98 +8,17 @@ const VoiceInput = () => {
   const [text, setText] = useState("");
   const [isListening, setIsListening] = useState(false);
   const [isStopped, setIsStopped] = useState(false);
-  const [language, setLanguage] = useState("hi-IN"); // Default to Hindi
+  const [language, setLanguage] = useState("hi-IN");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [loadingSpinner, setLoadingSpinner] = useState(false);
 
-  // Store recognition instance in useRef
   const recognitionRef = useRef(null);
 
-  // Initialize SpeechRecognition
-
-  /*if (!recognitionRef.current) {
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-    recognitionRef.current = new SpeechRecognition();
-    recognitionRef.current.continuous = false; // Ensure recording stops when stopped
-    recognitionRef.current.interimResults = false; // Only get final results
-  }
-
-  // Update language dynamically
-  recognitionRef.current.lang = language;
-
-  // Start Listening
-  const startListening = () => {
-    setIsListening(true);
-    setIsStopped(false);
-    recognitionRef.current.start();
-  };
-
-  // Stop Listening Completely
-  const stopListening = () => {
-    setIsListening(false);
-    setIsStopped(true);
-    recognitionRef.current.stop();
-    recognitionRef.current.abort(); // Fully stop speech recognition
-  };
-
-  // Handle Results
-  recognitionRef.current.onresult = (event) => {
-    const transcript = Array.from(event.results)
-      .map((result) => result[0].transcript)
-      .join(""); // Combine results
-    setText(transcript);
-  };
-
-  recognitionRef.current.onerror = (event) => {
-    console.error("Speech recognition error:", event.error);
-  };
-
-  // Handle Send Report
-  const sendReport = () => {
-    console.log("Report Sent:", text);
-    alert("Your report has been submitted!");
-    setText(""); // Clear the text
-    setIsStopped(false);
-  };
-
-  // Handle Re-record
-  const reRecord = () => {
-    setText(""); // Clear the text
-    setIsStopped(false);
-    startListening(); // Restart listening
-  };*/
-
   useEffect(() => {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (SpeechRecognition) {
-      recognitionRef.current = new SpeechRecognition();
-      recognitionRef.current.continuous = true;
-      recognitionRef.current.interimResults = false;
-
-      recognitionRef.current.onresult = (event) => {
-        const transcript = Array.from(event.results)
-          .map((result) => result[0].transcript)
-          .join("");
-        setText(transcript);
-      };
-
-      recognitionRef.current.onerror = (event) => {
-        console.error("Speech recognition error:", event.error);
-        setError("Speech recognition error. Please try again.");
-      };
-    } else {
-      setError("Speech recognition is not supported in this browser.");
-    }
-  }, []);
-
-  useEffect(() => {
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-
     if (SpeechRecognition) {
       recognitionRef.current = new SpeechRecognition();
       recognitionRef.current.continuous = true;
@@ -129,7 +47,7 @@ const VoiceInput = () => {
 
     const handleEnd = () => {
       if (isListening && !isStopped) {
-        setTimeout(() => recognitionRef.current.start(), 500); // Restart with a delay to prevent looping issues
+        setTimeout(() => recognitionRef.current.start(), 500);
       }
     };
 
@@ -144,8 +62,8 @@ const VoiceInput = () => {
     if (!recognitionRef.current) return;
     setIsListening(true);
     setIsStopped(false);
-    setError(null); // Clear any previous errors
-    setSuccess(false); // Clear any previous success messages
+    setError(null);
+    setSuccess(false);
     recognitionRef.current.start();
   };
 
@@ -168,7 +86,6 @@ const VoiceInput = () => {
     setSuccess(false);
     
     try {
-      // Get user's current location
       const getCurrentLocation = () => {
         return new Promise((resolve, reject) => {
           if (!navigator.geolocation) {
@@ -184,7 +101,6 @@ const VoiceInput = () => {
               });
             },
             (error) => {
-              // If location access is denied, use default Mumbai coordinates
               console.warn("Location access denied, using default coordinates");
               resolve({
                 latitude: 19.0760,
@@ -211,8 +127,6 @@ const VoiceInput = () => {
       console.log("Sending data to backend:", extractedData);
       console.log("Making request to: http://127.0.0.1:8000/api/voice-report/");
 
-      // First, test if backend is reachable
-      console.log("Testing backend connectivity...");
       try {
         await axios.get("http://127.0.0.1:8000/api/latest-incidents/");
         console.log("Backend is reachable");
@@ -229,8 +143,8 @@ const VoiceInput = () => {
       console.log("Backend response:", response.data);
 
       setSuccess(true);
-      setText(""); // Reset transcript manually
-      setIsStopped(false); // Reset the stopped state
+      setText("");
+      setIsStopped(false);
       alert("Incident submitted successfully!");
     } catch (err) {
       console.error("Full error object:", err);
@@ -238,11 +152,9 @@ const VoiceInput = () => {
       console.error("Error response data:", err.response?.data);
       console.error("Error status:", err.response?.status);
       
-      // Handle different types of errors
       let errorMessage = "Failed to process the incident. Please try again.";
       
       if (err.response) {
-        // Server responded with error status
         const statusCode = err.response.status;
         const responseData = err.response.data;
         
@@ -263,11 +175,9 @@ const VoiceInput = () => {
           errorMessage = `Server Error: HTTP ${statusCode}`;
         }
       } else if (err.request) {
-        // Request was made but no response received
         console.error("No response received:", err.request);
         errorMessage = "No response from server. Please check if the backend is running on http://127.0.0.1:8000";
       } else {
-        // Something else happened
         errorMessage = `Request Error: ${err.message}`;
       }
       
@@ -280,33 +190,31 @@ const VoiceInput = () => {
   };
 
   const reRecord = () => {
-    setText(""); // Clear the text
+    setText("");
     setIsStopped(false);
-    setError(null); // Clear any previous errors
-    setSuccess(false); // Clear any previous success messages
-    startListening(); // Restart listening
+    setError(null);
+    setSuccess(false);
+    startListening();
   };
 
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-950 to-black p-1 ">
-        <div className="max-w-2xl mx-auto border border-cyan-500  ">
-          {/* Main Card */}
-          <div className="max-w-2xl p-8 mx-auto border bg-gray-900 border-cyan-500  duration-300 hover:shadow-[0_0_25px_#00ffff]">
-            {/* Header */}
+      <div className="min-h-screen flex items-center justify-center bg-[#0f0f0f] p-1">
+        <div className="max-w-2xl mx-auto border border-[#4da6a8]">
+          <div className="max-w-2xl p-8 mx-auto border bg-[#1a1a1a] border-[#4da6a8]">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center gap-3 mb-4">
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-4 drop-shadow-[0_0_10px_cyan]">
+                <h1 className="text-3xl font-bold text-[#4da6a8] mb-4">
                   Voice Incident Reporting
                 </h1>
                 <div
                   className={`p-3 rounded-full ${
-                    isListening ? "bg-red-500/20 animate-pulse" : "bg-slate-700"
-                  } shadow-inner`}
+                    isListening ? "bg-[#c85c5c]/20" : "bg-[#2a2a2a]"
+                  }`}
                 >
                   <Mic
                     className={`w-6 h-6 ${
-                      isListening ? "text-red-500" : "text-cyan-400"
+                      isListening ? "text-[#c85c5c]" : "text-[#4da6a8]"
                     }`}
                   />
                 </div>
@@ -317,7 +225,6 @@ const VoiceInput = () => {
               </p>
             </div>
 
-            {/* Language Selection */}
             <div className="mb-6">
               <label className="block text-gray-300 font-medium mb-2">
                 Select Language
@@ -326,92 +233,65 @@ const VoiceInput = () => {
                 <select
                   value={language}
                   onChange={(e) => setLanguage(e.target.value)}
-                  className="w-full bg-gradient-to-b from-slate-800 to-slate-900/90 text-gray-200 px-4 py-3 rounded-xl 
-    border border-slate-600/50 hover:border-cyan-500/70
-    focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30 
-    shadow-[inset_2px_2px_8px_rgba(0,0,0,0.3)] 
-    appearance-none transition-all duration-200
-    backdrop-blur-sm
-    hover:bg-slate-800/90
-    cursor-pointer
-    text-lg font-medium"
+                  className="w-full bg-[#2a2a2a] text-gray-200 px-4 py-3 rounded-xl border border-[#333] focus:border-[#4da6a8] cursor-pointer text-lg font-medium"
                 >
-                  <option value="hi-IN" className="bg-slate-800">
+                  <option value="hi-IN" className="bg-[#2a2a2a]">
                     Hindi
                   </option>
-                  <option value="en-US" className="bg-slate-800">
+                  <option value="en-US" className="bg-[#2a2a2a]">
                     English
                   </option>
-                  <option value="mr-IN" className="bg-slate-800">
+                  <option value="mr-IN" className="bg-[#2a2a2a]">
                     Marathi
                   </option>
-                  <option value="es-ES" className="bg-slate-800">
+                  <option value="es-ES" className="bg-[#2a2a2a]">
                     Spanish
                   </option>
-                  <option value="fr-FR" className="bg-slate-800">
+                  <option value="fr-FR" className="bg-[#2a2a2a]">
                     French
                   </option>
                 </select>
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-cyan-400/80 pointer-events-none transition-transform duration-200 group-hover:text-cyan-300">
-                  <svg
-                    className="w-5 h-5 transform group-hover:translate-y-0.5 transition-transform duration-200"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </div>
               </div>
             </div>
 
-            {/* Error Display */}
             {error && (
-              <div className="mb-4 p-4 bg-red-900/20 border border-red-500/50 rounded-xl">
-                <p className="text-red-400 text-sm">{error}</p>
+              <div className="mb-4 p-4 bg-[#c85c5c]/20 border border-[#c85c5c]/50 rounded-xl">
+                <p className="text-[#c85c5c] text-sm">{error}</p>
               </div>
             )}
 
-            {/* Success Display */}
             {success && (
-              <div className="mb-4 p-4 bg-green-900/20 border border-green-500/50 rounded-xl">
-                <p className="text-green-400 text-sm">Incident submitted successfully!</p>
+              <div className="mb-4 p-4 bg-[#4da6a8]/20 border border-[#4da6a8]/50 rounded-xl">
+                <p className="text-[#4da6a8] text-sm">Incident submitted successfully!</p>
               </div>
             )}
 
-            {/* Voice Input Display */}
             <div className="mb-6">
               <textarea
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Please describe the incident clearly. Include details like the type of incident, location, time, and any relevant observations. Make sure to mention the location in your description for better accuracy."
-                className="w-full bg-slate-900/50 text-gray-200 px-4 py-3 rounded-xl border border-slate-600 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 shadow-[inset_2px_2px_8px_rgba(0,0,0,0.3)] min-h-[120px] resize-none"
+                className="w-full bg-[#2a2a2a] text-gray-200 px-4 py-3 rounded-xl border border-[#333] focus:border-[#4da6a8] min-h-[120px] resize-none"
                 rows="4"
               />
             </div>
 
-            {/* Control Buttons */}
             <div className="space-y-4">
               {isListening ? (
                 <button
                   onClick={stopListening}
-                  className="w-full py-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl font-medium shadow-lg hover:shadow-red-500/20 transition-all duration-200 flex items-center justify-center gap-2 group"
+                  className="w-full py-4 bg-[#c85c5c] text-white rounded-xl font-medium flex items-center justify-center gap-2"
                 >
-                  <StopCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  <StopCircle className="w-5 h-5" />
                   Stop Recording
                 </button>
               ) : (
                 !isStopped && (
                   <button
                     onClick={startListening}
-                    className="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl font-medium shadow-lg hover:shadow-green-500/20 transition-all duration-200 flex items-center justify-center gap-2 group"
+                    className="w-full py-4 bg-[#4da6a8] text-white rounded-xl font-medium flex items-center justify-center gap-2"
                   >
-                    <Mic className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    <Mic className="w-5 h-5" />
                     Start Recording
                   </button>
                 )
@@ -421,23 +301,23 @@ const VoiceInput = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <button
                     onClick={analyzeAndSubmit}
-                    className="py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl font-medium shadow-lg hover:shadow-cyan-500/20 transition-all duration-200 flex items-center justify-center gap-2 group"
+                    className="py-4 bg-[#4da6a8] text-white rounded-xl font-medium flex items-center justify-center gap-2"
                   >
-                    <Send className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    <Send className="w-5 h-5" />
                     Send Report
                   </button>
                   <button
                     onClick={reRecord}
-                    className="py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-medium shadow-lg hover:shadow-amber-500/20 transition-all duration-200 flex items-center justify-center gap-2 group"
+                    className="py-4 bg-[#d1a45b] text-white rounded-xl font-medium flex items-center justify-center gap-2"
                   >
-                    <Repeat className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    <Repeat className="w-5 h-5" />
                     Re-record
                   </button>
                 </div>
               )}
               {loadingSpinner && (
                 <div className="flex justify-center mt-4">
-                  <BarLoader color="#06b6d4" />
+                  <BarLoader color="#4da6a8" />
                 </div>
               )}
             </div>

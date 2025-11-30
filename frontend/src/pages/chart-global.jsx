@@ -30,7 +30,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 console.log("API Host:", API_HOST);
 console.log("API_URL:", API_URL);
 
-// Enhanced chart options with neuromorphic theme
+// Enhanced chart options with new theme
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -38,7 +38,7 @@ const chartOptions = {
     legend: {
       position: "top",
       labels: {
-        color: "#94ecf7",
+        color: "#4da6a8",
         font: {
           family: "'Inter', sans-serif",
           weight: 500,
@@ -48,10 +48,10 @@ const chartOptions = {
       },
     },
     tooltip: {
-      backgroundColor: "rgba(0, 24, 48, 0.9)",
-      titleColor: "#94ecf7",
-      bodyColor: "#94ecf7",
-      borderColor: "rgba(148, 236, 247, 0.2)",
+      backgroundColor: "rgba(15, 15, 15, 0.9)",
+      titleColor: "#4da6a8",
+      bodyColor: "#4da6a8",
+      borderColor: "rgba(77, 166, 168, 0.2)",
       borderWidth: 1,
       padding: 12,
       boxPadding: 6,
@@ -61,11 +61,11 @@ const chartOptions = {
   scales: {
     x: {
       grid: {
-        color: "rgba(148, 236, 247, 0.1)",
+        color: "rgba(77, 166, 168, 0.1)",
         drawBorder: false,
       },
       ticks: {
-        color: "#94ecf7",
+        color: "#4da6a8",
         font: {
           family: "'Inter', sans-serif",
         },
@@ -75,11 +75,11 @@ const chartOptions = {
     },
     y: {
       grid: {
-        color: "rgba(148, 236, 247, 0.1)",
+        color: "rgba(77, 166, 168, 0.1)",
         drawBorder: false,
       },
       ticks: {
-        color: "#94ecf7",
+        color: "#4da6a8",
         font: {
           family: "'Inter', sans-serif",
         },
@@ -146,8 +146,8 @@ const IncidentAnalyticsDashboard = () => {
         label: "Incidents",
         data:
           data?.hourly_distribution.map((item) => item.incident_count) || [],
-        backgroundColor: "rgba(148, 236, 247, 0.5)",
-        borderColor: "rgba(148, 236, 247, 0.8)",
+        backgroundColor: "rgba(77, 166, 168, 0.5)",
+        borderColor: "rgba(77, 166, 168, 0.8)",
         borderWidth: 2,
       },
       {
@@ -155,8 +155,8 @@ const IncidentAnalyticsDashboard = () => {
         data:
           data?.hourly_distribution.map((item) => item.high_severity_count) ||
           [],
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-        borderColor: "rgba(255, 99, 132, 0.8)",
+        backgroundColor: "rgba(200, 92, 92, 0.5)",
+        borderColor: "rgba(200, 92, 92, 0.8)",
         borderWidth: 2,
       },
     ],
@@ -169,18 +169,18 @@ const IncidentAnalyticsDashboard = () => {
         data:
           data?.incident_type_analysis.map((item) => item.total_count) || [],
         backgroundColor: [
-          "rgba(148, 236, 247, 0.6)",
-          "rgba(255, 99, 132, 0.6)",
-          "rgba(255, 206, 86, 0.6)",
-          "rgba(75, 192, 192, 0.6)",
-          "rgba(153, 102, 255, 0.6)",
+          "rgba(77, 166, 168, 0.6)",
+          "rgba(200, 92, 92, 0.6)",
+          "rgba(209, 164, 91, 0.6)",
+          "rgba(77, 166, 168, 0.6)",
+          "rgba(77, 166, 168, 0.6)",
         ],
         borderColor: [
-          "rgba(148, 236, 247, 0.8)",
-          "rgba(255, 99, 132, 0.8)",
-          "rgba(255, 206, 86, 0.8)",
-          "rgba(75, 192, 192, 0.8)",
-          "rgba(153, 102, 255, 0.8)",
+          "rgba(77, 166, 168, 0.8)",
+          "rgba(200, 92, 92, 0.8)",
+          "rgba(209, 164, 91, 0.8)",
+          "rgba(77, 166, 168, 0.8)",
+          "rgba(77, 166, 168, 0.8)",
         ],
         borderWidth: 2,
       },
@@ -201,15 +201,15 @@ const IncidentAnalyticsDashboard = () => {
       {
         label: "Total Incidents",
         data: data?.weekly_pattern.map((item) => item.total_incidents) || [],
-        backgroundColor: "rgba(148, 236, 247, 0.5)",
-        borderColor: "rgba(148, 236, 247, 0.8)",
+        backgroundColor: "rgba(77, 166, 168, 0.5)",
+        borderColor: "rgba(77, 166, 168, 0.8)",
         borderWidth: 2,
       },
       {
         label: "Resolution Rate",
         data: data?.weekly_pattern.map((item) => item.resolution_rate) || [],
-        backgroundColor: "rgba(153, 102, 255, 0.5)",
-        borderColor: "rgba(153, 102, 255, 0.8)",
+        backgroundColor: "rgba(77, 166, 168, 0.5)",
+        borderColor: "rgba(77, 166, 168, 0.8)",
         borderWidth: 2,
       },
     ],
@@ -225,8 +225,8 @@ const IncidentAnalyticsDashboard = () => {
           data?.emergency_services_summary.map(
             (item) => item.police_involved
           ) || [],
-        backgroundColor: "rgba(54, 162, 235, 0.5)",
-        borderColor: "rgba(54, 162, 235, 0.8)",
+        backgroundColor: "rgba(77, 166, 168, 0.5)",
+        borderColor: "rgba(77, 166, 168, 0.8)",
         borderWidth: 2,
       },
       {
@@ -234,8 +234,8 @@ const IncidentAnalyticsDashboard = () => {
         data:
           data?.emergency_services_summary.map((item) => item.fire_involved) ||
           [],
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-        borderColor: "rgba(255, 99, 132, 0.8)",
+        backgroundColor: "rgba(209, 164, 91, 0.5)",
+        borderColor: "rgba(209, 164, 91, 0.8)",
         borderWidth: 2,
       },
       {
@@ -244,8 +244,8 @@ const IncidentAnalyticsDashboard = () => {
           data?.emergency_services_summary.map(
             (item) => item.hospital_involved
           ) || [],
-        backgroundColor: "rgba(75, 192, 192, 0.5)",
-        borderColor: "rgba(75, 192, 192, 0.8)",
+        backgroundColor: "rgba(200, 92, 92, 0.5)",
+        borderColor: "rgba(200, 92, 92, 0.8)",
         borderWidth: 2,
       },
     ],
@@ -253,16 +253,16 @@ const IncidentAnalyticsDashboard = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-[#001830]">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-cyan-400 border-t-transparent shadow-[0_0_15px_rgba(34,211,238,0.3)]"></div>
+      <div className="flex items-center justify-center h-screen bg-[#0f0f0f]">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#4da6a8] border-t-transparent shadow-[0_0_15px_rgba(77,166,168,0.3)]"></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex items-center justify-center h-screen bg-[#001830]">
-        <div className="text-cyan-400 p-6 bg-[#002345] rounded-xl shadow-[5px_5px_15px_rgba(0,0,0,0.3),-5px_-5px_15px_rgba(0,255,255,0.1)] border border-cyan-400/20">
+      <div className="flex items-center justify-center h-screen bg-[#0f0f0f]">
+        <div className="text-[#4da6a8] p-6 bg-[#1a1a1a] rounded-xl border border-[#4da6a8]/20">
           Error: {error}
         </div>
       </div>
@@ -272,9 +272,9 @@ const IncidentAnalyticsDashboard = () => {
   if (!data) return null;
 
   return (
-    <div className="p-4 md:p-8 bg-slate-900 min-h-screen">
+    <div className="p-4 md:p-8 bg-[#0f0f0f] min-h-screen">
       {/* Title with enhanced glow effect */}
-      <h1 className="text-3xl md:text-5xl font-bold text-cyan-400 mb-8 md:mb-12 text-center drop-shadow-[0_0_8px_rgba(34,211,238,0.5)] animate-pulse">
+      <h1 className="text-3xl md:text-5xl font-bold text-[#4da6a8] mb-8 md:mb-12 text-center drop-shadow-[0_0_8px_rgba(77,166,168,0.5)]">
         Incident Analytics Dashboard
       </h1>
 
@@ -303,12 +303,12 @@ const IncidentAnalyticsDashboard = () => {
         ].map((stat, index) => (
           <div
             key={index}
-            className="bg-[#002345] rounded-xl p-4 md:p-6 shadow-[5px_5px_15px_rgba(0,0,0,0.3),-5px_-5px_15px_rgba(0,255,255,0.1)] border border-cyan-400/20 transform transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:scale-105"
+            className="bg-[#1a1a1a] rounded-xl p-4 md:p-6 border border-[#4da6a8]/20 transform transition-all duration-300 hover:shadow-[0_0_20px_rgba(77,166,168,0.3)] hover:scale-105"
           >
             <div className="flex items-center space-x-3 md:space-x-4">
               <span className="text-xl md:text-2xl">{stat.icon}</span>
               <div>
-                <h3 className="text-sm md:text-lg font-semibold text-cyan-400 mb-1 md:mb-2">
+                <h3 className="text-sm md:text-lg font-semibold text-[#4da6a8] mb-1 md:mb-2">
                   {stat.title}
                 </h3>
                 <div className="text-xl md:text-3xl font-bold text-white">
@@ -362,12 +362,12 @@ const IncidentAnalyticsDashboard = () => {
         ].map((section, index) => (
           <div
             key={index}
-            className="bg-[#002345] rounded-xl p-4 md:p-6 shadow-[5px_5px_15px_rgba(0,0,0,0.3),-5px_-5px_15px_rgba(0,255,255,0.1)] border border-cyan-400/20 transform transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+            className="bg-[#1a1a1a] rounded-xl p-4 md:p-6 border border-[#4da6a8]/20 transform transition-all duration-300 hover:shadow-[0_0_20px_rgba(77,166,168,0.3)]"
           >
-            <h3 className="text-lg md:text-xl font-semibold text-cyan-400 mb-4 md:mb-6 p-2 md:p-3 rounded-lg shadow-[inset_-2px_-2px_8px_rgba(0,0,0,0.2),_inset_2px_2px_8px_rgba(0,255,255,0.1)] border border-cyan-400/20 text-center md:text-left">
+            <h3 className="text-lg md:text-xl font-semibold text-[#4da6a8] mb-4 md:mb-6 p-2 md:p-3 rounded-lg border border-[#4da6a8]/20 text-center md:text-left">
               {section.title}
             </h3>
-            <div className="h-[300px] md:h-[400px] bg-[#001830] rounded-lg p-2 md:p-4 shadow-[inset_-4px_-4px_8px_rgba(0,0,0,0.3),inset_4px_4px_8px_rgba(0,255,255,0.1)] border border-cyan-400/10">
+            <div className="h-[300px] md:h-[400px] bg-[#0f0f0f] rounded-lg p-2 md:p-4 border border-[#4da6a8]/10">
               {section.chart}
             </div>
           </div>

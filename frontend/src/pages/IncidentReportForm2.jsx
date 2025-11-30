@@ -185,7 +185,7 @@ const IncidentReportForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-black">
+    <div className="min-h-screen bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-black">
       <SimpleModal
         open={offlineModalOpen}
         handleClose={handleModalClose}
@@ -199,7 +199,7 @@ const IncidentReportForm = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8 sm:mb-10 px-2"
         >
-          <h1 className="text-3xl sm:text-5xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-3 sm:mb-4 drop-shadow-[0_0_10px_cyan]">
+          <h1 className="text-3xl sm:text-5xl font-bold bg-gradient-to-r from-[#4da6a8] to-[#3e8c8e] bg-clip-text text-transparent mb-3 sm:mb-4 drop-shadow-[0_0_10px_#4da6a8]">
             Report an Incident
           </h1>
           <p className="text-gray-400 text-sm sm:text-lg max-w-lg sm:max-w-2xl mx-auto">
@@ -214,19 +214,19 @@ const IncidentReportForm = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-full sm:max-w-2xl mx-auto"
         >
-          <div className="bg-slate-900 rounded-xl sm:rounded-2xl p-4 sm:p-8 border border-cyan-500 transition-all duration-300 hover:shadow-[0_0_20px_cyan]">
+          <div className="bg-[#1a1a1a] rounded-xl sm:rounded-2xl p-4 sm:p-8 border border-[#4da6a8] transition-all duration-300 hover:shadow-[0_0_20px_#4da6a8]">
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Incident Type Section */}
               <div className="relative">
                 <label className="text-gray-300 text-sm font-medium mb-2 block">
-                  <AlertTriangle className="w-4 h-4 inline-block mr-2 text-cyan-400" />
+                  <AlertTriangle className="w-4 h-4 inline-block mr-2 text-[#4da6a8]" />
                   Incident Type
                 </label>
                 <select
                   name="incidentType"
                   value={formData.incidentType}
                   onChange={handleChange}
-                  className="w-full bg-slate-800 text-gray-100 px-3 py-2 sm:px-4 sm:py-3 rounded-xl border border-slate-700 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] transition-all duration-200 text-sm sm:text-base"
+                  className="w-full bg-[#2a2a2a] text-gray-100 px-3 py-2 sm:px-4 sm:py-3 rounded-xl border border-[#333] focus:border-[#4da6a8] focus:ring-1 focus:ring-[#4da6a8] shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] transition-all duration-200 text-sm sm:text-base"
                 >
                   <option value="">Select an incident type</option>
                   <option value="Pothole/Road Damage">
@@ -275,7 +275,7 @@ const IncidentReportForm = () => {
                   className="relative"
                 >
                   <label className="text-gray-300 text-sm font-medium mb-2 block">
-                    <FileText className="w-4 h-4 inline-block mr-2 text-cyan-400" />
+                    <FileText className="w-4 h-4 inline-block mr-2 text-[#4da6a8]" />
                     Specify Incident Type
                   </label>
                   <input
@@ -283,7 +283,7 @@ const IncidentReportForm = () => {
                     name="customIncidentType"
                     value={formData.customIncidentType}
                     onChange={handleChange}
-                    className="w-full bg-slate-800 text-gray-100 px-3 py-2 sm:px-4 sm:py-3 rounded-xl border border-slate-700 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] text-sm sm:text-base"
+                    className="w-full bg-[#2a2a2a] text-gray-100 px-3 py-2 sm:px-4 sm:py-3 rounded-xl border border-[#333] focus:border-[#4da6a8] focus:ring-1 focus:ring-[#4da6a8] shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] text-sm sm:text-base"
                     placeholder="Enter the incident type"
                   />
                 </motion.div>
@@ -292,7 +292,7 @@ const IncidentReportForm = () => {
               {/* Location Section */}
               <div className="relative">
                 <label className="text-gray-300 text-sm font-medium mb-2 block">
-                  <MapPin className="w-4 h-4 inline-block mr-2 text-cyan-400" />
+                  <MapPin className="w-4 h-4 inline-block mr-2 text-[#4da6a8]" />
                   Location of Incident
                 </label>
                 <div className="flex flex-col sm:flex-row flex-wrap gap-2">
@@ -305,13 +305,13 @@ const IncidentReportForm = () => {
                         : ""
                     }
                     readOnly
-                    className="flex-1 bg-slate-800 text-gray-100 px-3 py-2 sm:px-4 sm:py-3 rounded-xl border border-slate-700 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] text-sm sm:text-base"
+                    className="flex-1 bg-[#2a2a2a] text-gray-100 px-3 py-2 sm:px-4 sm:py-3 rounded-xl border border-[#333] focus:border-[#4da6a8] focus:ring-1 focus:ring-[#4da6a8] shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] text-sm sm:text-base"
                     placeholder="Select location on map"
                   />
                   <button
                     type="button"
                     onClick={() => setIsMapOpen(true)}
-                    className="mt-2 sm:mt-0 px-3 py-2 sm:px-4 sm:py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-xl transition-colors duration-200 flex items-center gap-2 shadow-lg hover:shadow-cyan-500/20 text-sm sm:text-base"
+                    className="mt-2 sm:mt-0 px-3 py-2 sm:px-4 sm:py-2 bg-[#4da6a8] hover:bg-[#3e8c8e] text-white rounded-xl transition-colors duration-200 flex items-center gap-2 shadow-lg hover:shadow-[#4da6a8]/20 text-sm sm:text-base"
                   >
                     <MapPin className="w-4 h-4" />
                     Select on Map
@@ -329,7 +329,7 @@ const IncidentReportForm = () => {
               {/* Description Section */}
               <div className="relative">
                 <label className="text-gray-300 text-sm font-medium mb-2 block">
-                  <FileText className="w-4 h-4 inline-block mr-2 text-cyan-400" />
+                  <FileText className="w-4 h-4 inline-block mr-2 text-[#4da6a8]" />
                   Description
                 </label>
                 <textarea
@@ -337,7 +337,7 @@ const IncidentReportForm = () => {
                   value={formData.description}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full bg-slate-800 text-gray-100 px-3 py-2 sm:px-4 sm:py-3 rounded-xl border border-slate-700 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] text-sm sm:text-base"
+                  className="w-full bg-[#2a2a2a] text-gray-100 px-3 py-2 sm:px-4 sm:py-3 rounded-xl border border-[#333] focus:border-[#4da6a8] focus:ring-1 focus:ring-[#4da6a8] shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] text-sm sm:text-base"
                   placeholder="Provide detailed description of the incident"
                 />
               </div>
@@ -345,14 +345,14 @@ const IncidentReportForm = () => {
               {/* File Upload Section */}
               <div className="relative">
                 <label className="text-gray-300 text-sm font-medium mb-2 block">
-                  <Upload className="w-4 h-4 inline-block mr-2 text-cyan-400" />
+                  <Upload className="w-4 h-4 inline-block mr-2 text-[#4da6a8]" />
                   Attach Evidence
                 </label>
-                <div className="mt-1 flex justify-center px-2 sm:px-6 pt-4 sm:pt-5 pb-4 sm:pb-6 border-2 border-slate-700 border-dashed rounded-xl hover:border-cyan-400 transition-colors duration-200">
+                <div className="mt-1 flex justify-center px-2 sm:px-6 pt-4 sm:pt-5 pb-4 sm:pb-6 border-2 border-[#333] border-dashed rounded-xl hover:border-[#4da6a8] transition-colors duration-200">
                   <div className="space-y-1 text-center w-full">
                     <Camera className="mx-auto h-10 w-10 sm:h-12 sm:w-12 text-gray-400" />
                     <div className="flex flex-col sm:flex-row items-center justify-center text-xs sm:text-sm text-gray-400 gap-1 sm:gap-0">
-                      <label className="relative cursor-pointer rounded-md font-medium text-cyan-400 hover:text-cyan-300">
+                      <label className="relative cursor-pointer rounded-md font-medium text-[#4da6a8] hover:text-[#3e8c8e]">
                         <span>Upload a file</span>
                         <input
                           type="file"
@@ -377,14 +377,14 @@ const IncidentReportForm = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl font-medium shadow-lg hover:shadow-cyan-500/20 transition-all duration-200 text-base sm:text-lg"
+                className="w-full py-3 sm:py-4 bg-gradient-to-r from-[#4da6a8] to-[#3e8c8e] text-white rounded-xl font-medium shadow-lg hover:shadow-[#4da6a8]/20 transition-all duration-200 text-base sm:text-lg"
               >
                 Submit Report
               </motion.button>
 
               {loadingSpinner && (
                 <div className="flex justify-center mt-4">
-                  <BarLoader color="#06b6d4" />
+                  <BarLoader color="#4da6a8" />
                 </div>
               )}
             </form>
@@ -398,7 +398,7 @@ const IncidentReportForm = () => {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-700 max-w-md w-full mx-4"
+            className="bg-[#1a1a1a] p-6 rounded-2xl shadow-2xl border border-[#333] max-w-md w-full mx-4"
           >
             <div className="text-center">
               <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -425,7 +425,7 @@ const IncidentReportForm = () => {
               </p>
               <button
                 onClick={() => setModalOpen(false)}
-                className="px-6 py-2 bg-cyan-500 text-white rounded-xl hover:bg-cyan-600 transition-colors duration-200"
+                className="px-6 py-2 bg-[#4da6a8] text-white rounded-xl hover:bg-[#3e8c8e] transition-colors duration-200"
               >
                 Close
               </button>

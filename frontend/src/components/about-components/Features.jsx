@@ -11,24 +11,23 @@ import {
 } from "@mui/material";
 import { Link, BrowserRouter as Router } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import FadeInComponent from "@/lib/FadeInComponent";
 
 // Custom theme with Ubuntu font
 const theme = createTheme({
   typography: {
-    fontFamily: "Ubuntu, sans-serif", // Set Ubuntu as the default font family
+    fontFamily: "Ubuntu, sans-serif",
     h3: {
       fontWeight: 700,
       fontSize: "2.5rem",
-      color: "#333", // Darker for better contrast
+      color: "#333",
     },
     h5: {
       fontWeight: 600,
       fontSize: "1.25rem",
-      color: "#444", // Slightly darker for better readability
+      color: "#444",
     },
     body1: {
-      color: "#555", // Slightly lighter text for body content
+      color: "#555",
       fontSize: "1rem",
     },
   },
@@ -74,58 +73,51 @@ const features = [
 
 const Features = forwardRef((props, ref) => {
   return (
-   <div ref={ref} className="min-h-screen bg-slate-900 py-12 px-4 overflow-hidden">
-  <h1 className="text-4xl font-bold text-center mb-8 text-cyan-400 font-['Smooch_Sans'] drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">
-    Our Features
-  </h1>
+    <div ref={ref} className="min-h-screen bg-[#0f0f0f] py-12 px-4">
+      <h1 className="text-4xl font-bold text-center mb-8 text-[#4da6a8] font-['Smooch_Sans']">
+        Our Features
+      </h1>
 
-  <div className="space-y-12">
-    {features.map((feature, index) => (
-      <div
-        key={feature.id}
-        className={`flex flex-col sm:${
-          index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-        } items-center gap-4 transition-transform duration-300 hover:scale-102`}
-      >
-        <div className="w-full">
-          <a href={feature.linkTo} className="w-full no-underline block">
-            <div className="flex flex-col sm:flex-row bg-slate-800 rounded-xl shadow-[inset_-12px_-12px_24px_#1e293b,inset_12px_12px_24px_#0f172a] overflow-hidden transition-all duration-300 hover:scale-95 
-              hover:shadow-[0_0_20px_rgba(34,211,238,0.5)]">
-              <div className="w-full sm:w-4/5 min-h-[300px] sm:min-h-[400px] relative">
-                <img
-                  src={feature.imageUrl}
-                  alt={feature.title}
-                  className="absolute inset-0 w-full h-full object-cover rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
-                />
-              </div>
+      <div className="space-y-12">
+        {features.map((feature, index) => (
+          <div
+            key={feature.id}
+            className={`flex flex-col sm:${
+              index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+            } items-center gap-4`}
+          >
+            <div className="w-full">
+              <a href={feature.linkTo} className="w-full no-underline block">
+                <div className="flex flex-col sm:flex-row bg-[#1a1a1a] rounded-xl overflow-hidden">
+                  <div className="w-full sm:w-4/5 min-h-[300px] sm:min-h-[400px] relative">
+                    <img
+                      src={feature.imageUrl}
+                      alt={feature.title}
+                      className="absolute inset-0 w-full h-full object-cover rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
+                    />
+                  </div>
 
-              <div className="flex flex-col justify-center p-6 sm:p-8 bg-slate-800 rounded-b-xl sm:rounded-r-xl sm:rounded-bl-none flex-grow">
-                <h2 className="text-2xl font-bold mb-4 text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">
-                  {feature.title}
-                </h2>
-                <p className="text-gray-300 mb-6">
-                  {feature.description}
-                </p>
-                <button
-                  className="mt-3 w-full sm:w-1/2 self-center rounded-xl bg-cyan-900 py-3 px-6 text-cyan-100 text-sm font-semibold 
-                  shadow-[inset_-4px_-4px_8px_#164e63,inset_4px_4px_8px_#083344] 
-                  hover:shadow-[inset_-6px_-6px_12px_#164e63,inset_6px_6px_12px_#083344] 
-                  hover:bg-cyan-800
-                  transition-all duration-300"
-                  type="button"
-                >
-                  Try Now
-                </button>
-              </div>
+                  <div className="flex flex-col justify-center p-6 sm:p-8 bg-[#1a1a1a] rounded-b-xl sm:rounded-r-xl sm:rounded-bl-none flex-grow">
+                    <h2 className="text-2xl font-bold mb-4 text-[#4da6a8]">
+                      {feature.title}
+                    </h2>
+                    <p className="text-gray-300 mb-6">
+                      {feature.description}
+                    </p>
+                    <button
+                      className="mt-3 w-full sm:w-1/2 self-center rounded-xl bg-[#4da6a8] py-3 px-6 text-white text-sm font-semibold"
+                      type="button"
+                    >
+                      Try Now
+                    </button>
+                  </div>
+                </div>
+              </a>
             </div>
-          </a>
-        </div>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
-</div>
-
-  
+    </div>
   );
 });
 

@@ -121,25 +121,25 @@ const VideoAnalysis = () => {
 
   const getStatusColor = (status) => {
     const colors = {
-      pending: "bg-yellow-500",
-      processing: "bg-blue-500",
-      completed: "bg-green-500",
-      failed: "bg-red-500"
+      pending: "bg-[#d1a45b]",
+      processing: "bg-[#4da6a8]",
+      completed: "bg-[#4da6a8]",
+      failed: "bg-[#c85c5c]"
     };
     return colors[status] || "bg-gray-500";
   };
 
   const getSeverityColor = (severity) => {
     const colors = {
-      low: "text-green-400",
-      medium: "text-yellow-400",
-      high: "text-orange-400",
-      critical: "text-red-400"
+      low: "text-[#4da6a8]",
+      medium: "text-[#d1a45b]",
+      high: "text-[#c85c5c]",
+      critical: "text-[#c85c5c]"
     };
     return colors[severity] || "text-gray-400";
   };
 
-  const COLORS = ['#10b981', '#fbbf24', '#fb923c', '#ef4444'];
+  const COLORS = ['#4da6a8', '#d1a45b', '#c85c5c', '#c85c5c'];
 
   if (selectedVideo) {
     const timelineData = selectedVideo.timestamp_data || [];
@@ -151,23 +151,23 @@ const VideoAnalysis = () => {
     ].filter(d => d.value > 0);
 
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 p-4 md:p-8">
+      <div className="min-h-screen bg-[#0f0f0f] p-4 md:p-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <button
               onClick={() => setSelectedVideo(null)}
-              className="text-sky-400 hover:text-sky-300 flex items-center gap-2 transition-colors"
+              className="text-[#4da6a8] hover:text-[#3e8c8e] flex items-center gap-2 transition-colors"
             >
               ← Back to Videos
             </button>
             <h1 className="text-2xl md:text-4xl font-bold text-white">Video Analysis Details</h1>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 mb-8 shadow-2xl">
+          <div className="bg-[#1a1a1a] rounded-2xl border border-[#4da6a8]/20 p-6 mb-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div>
                 <h2 className="text-xl font-bold text-white mb-4">Video Playback</h2>
-                <div className="relative bg-black rounded-xl overflow-hidden shadow-lg">
+                <div className="relative bg-black rounded-xl overflow-hidden">
                   <video
                     ref={videoRef}
                     src={selectedVideo.processed_video_url || selectedVideo.video_url}
@@ -179,14 +179,14 @@ const VideoAnalysis = () => {
                     <div className="flex items-center gap-4">
                       <button
                         onClick={toggleVideoPlayback}
-                        className="bg-sky-500 hover:bg-sky-600 text-white p-2 rounded-full transition-colors"
+                        className="bg-[#4da6a8] hover:bg-[#3e8c8e] text-white p-2 rounded-full transition-colors"
                       >
                         {videoPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
                       </button>
                       <div className="flex-1">
                         <div className="bg-white/20 rounded-full h-2">
                           <div
-                            className="bg-sky-500 h-2 rounded-full transition-all"
+                            className="bg-[#4da6a8] h-2 rounded-full transition-all"
                             style={{ width: `${(currentTime / selectedVideo.duration_seconds) * 100}%` }}
                           />
                         </div>
@@ -202,25 +202,25 @@ const VideoAnalysis = () => {
               <div>
                 <h2 className="text-xl font-bold text-white mb-4">Key Metrics</h2>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 hover:bg-blue-500/20 transition-colors">
-                    <AlertTriangle className="w-8 h-8 text-blue-400 mb-2" />
+                  <div className="bg-[#4da6a8]/10 border border-[#4da6a8]/30 rounded-xl p-4 hover:bg-[#4da6a8]/20 transition-colors">
+                    <AlertTriangle className="w-8 h-8 text-[#4da6a8] mb-2" />
                     <p className="text-gray-400 text-sm">Total Potholes</p>
                     <p className="text-3xl font-bold text-white">{selectedVideo.total_potholes_detected}</p>
                   </div>
-                  <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 hover:bg-yellow-500/20 transition-colors">
-                    <TrendingUp className="w-8 h-8 text-yellow-400 mb-2" />
+                  <div className="bg-[#d1a45b]/10 border border-[#d1a45b]/30 rounded-xl p-4 hover:bg-[#d1a45b]/20 transition-colors">
+                    <TrendingUp className="w-8 h-8 text-[#d1a45b] mb-2" />
                     <p className="text-gray-400 text-sm">Max Severity</p>
                     <p className={`text-2xl font-bold ${getSeverityColor(selectedVideo.max_severity)}`}>
                       {selectedVideo.max_severity?.toUpperCase() || 'N/A'}
                     </p>
                   </div>
-                  <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-4 hover:bg-green-500/20 transition-colors">
-                    <BarChart3 className="w-8 h-8 text-green-400 mb-2" />
+                  <div className="bg-[#4da6a8]/10 border border-[#4da6a8]/30 rounded-xl p-4 hover:bg-[#4da6a8]/20 transition-colors">
+                    <BarChart3 className="w-8 h-8 text-[#4da6a8] mb-2" />
                     <p className="text-gray-400 text-sm">Avg Area</p>
                     <p className="text-2xl font-bold text-white">{parseFloat(selectedVideo.average_area_cm2 || 0).toFixed(1)} cm²</p>
                   </div>
-                  <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 hover:bg-red-500/20 transition-colors">
-                    <DollarSign className="w-8 h-8 text-red-400 mb-2" />
+                  <div className="bg-[#c85c5c]/10 border border-[#c85c5c]/30 rounded-xl p-4 hover:bg-[#c85c5c]/20 transition-colors">
+                    <DollarSign className="w-8 h-8 text-[#c85c5c] mb-2" />
                     <p className="text-gray-400 text-sm">Est. Cost</p>
                     <p className="text-2xl font-bold text-white">${parseFloat(selectedVideo.total_estimated_cost || 0).toFixed(0)}</p>
                   </div>
@@ -230,7 +230,7 @@ const VideoAnalysis = () => {
           </div>
 
           {timelineData.length > 0 && (
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 mb-8 shadow-2xl">
+            <div className="bg-[#1a1a1a] rounded-2xl border border-[#4da6a8]/20 p-6 mb-8">
               <h2 className="text-xl font-bold text-white mb-4">Detection Timeline</h2>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={timelineData}>
@@ -245,18 +245,18 @@ const VideoAnalysis = () => {
                     label={{ value: 'Area (cm²)', angle: -90, position: 'insideLeft', fill: '#9CA3AF' }}
                   />
                   <Tooltip
-                    contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #475569', borderRadius: '8px' }}
+                    contentStyle={{ backgroundColor: '#1a1a1a', border: '1px solid #4da6a8', borderRadius: '8px' }}
                     labelStyle={{ color: '#fff' }}
                   />
                   <Legend />
-                  <Line type="monotone" dataKey="area" stroke="#38bdf8" strokeWidth={2} name="Pothole Area" dot={{ fill: '#38bdf8' }} />
+                  <Line type="monotone" dataKey="area" stroke="#4da6a8" strokeWidth={2} name="Pothole Area" dot={{ fill: '#4da6a8' }} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
           )}
 
           {severityData.length > 0 && (
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 mb-8 shadow-2xl">
+            <div className="bg-[#1a1a1a] rounded-2xl border border-[#4da6a8]/20 p-6 mb-8">
               <h2 className="text-xl font-bold text-white mb-4">Severity Distribution</h2>
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
@@ -275,7 +275,7 @@ const VideoAnalysis = () => {
                     ))}
                   </Pie>
                   <Tooltip
-                    contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #475569', borderRadius: '8px' }}
+                    contentStyle={{ backgroundColor: '#1a1a1a', border: '1px solid #4da6a8', borderRadius: '8px' }}
                   />
                 </PieChart>
               </ResponsiveContainer>
@@ -283,11 +283,11 @@ const VideoAnalysis = () => {
           )}
 
           {selectedVideo.frame_detections && selectedVideo.frame_detections.length > 0 && (
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 shadow-2xl">
+            <div className="bg-[#1a1a1a] rounded-2xl border border-[#4da6a8]/20 p-6">
               <h2 className="text-xl font-bold text-white mb-4">Frame Detections ({selectedVideo.frame_detections.length})</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-96 overflow-y-auto custom-scrollbar">
                 {selectedVideo.frame_detections.slice(0, 20).map((detection) => (
-                  <div key={detection.id} className="bg-black/30 rounded-lg overflow-hidden border border-white/10 hover:border-sky-500/50 transition-all">
+                  <div key={detection.id} className="bg-[#0f0f0f] rounded-lg overflow-hidden border border-[#2a2a2a] hover:border-[#4da6a8]/50 transition-all">
                     {detection.frame_image_url && (
                       <img src={detection.frame_image_url} alt={`Frame ${detection.frame_number}`} className="w-full h-32 object-cover" />
                     )}
@@ -309,20 +309,20 @@ const VideoAnalysis = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 p-4 md:p-8">
+    <div className="min-h-screen bg-[#0f0f0f] p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
             <div className="flex items-center gap-4">
-              <Video className="w-12 h-12 text-purple-400" />
-              <h1 className="text-3xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+              <Video className="w-12 h-12 text-[#4da6a8]" />
+              <h1 className="text-3xl md:text-5xl font-extrabold text-[#4da6a8]">
                 Video Pothole Analysis
               </h1>
             </div>
             <button
               onClick={() => fileInputRef.current?.click()}
               disabled={uploading}
-              className="bg-sky-500 hover:bg-sky-600 disabled:bg-gray-600 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-all shadow-lg hover:shadow-sky-500/50"
+              className="bg-[#4da6a8] hover:bg-[#3e8c8e] disabled:bg-gray-600 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-all"
             >
               <Upload className="w-5 h-5" />
               {uploading ? "Uploading..." : "Upload Video"}
@@ -339,36 +339,36 @@ const VideoAnalysis = () => {
 
         {statistics && (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border-2 border-blue-500 shadow-xl hover:shadow-blue-500/50 transition-all">
-              <Video className="w-10 h-10 text-blue-400 mb-3" />
+            <div className="bg-[#1a1a1a] p-6 rounded-2xl border border-[#4da6a8]/30">
+              <Video className="w-10 h-10 text-[#4da6a8] mb-3" />
               <h3 className="text-gray-400 text-sm mb-1">Total Videos</h3>
               <p className="text-3xl font-bold text-white">{statistics.total_videos_analyzed}</p>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border-2 border-yellow-500 shadow-xl hover:shadow-yellow-500/50 transition-all">
-              <AlertTriangle className="w-10 h-10 text-yellow-400 mb-3" />
+            <div className="bg-[#1a1a1a] p-6 rounded-2xl border border-[#4da6a8]/30">
+              <AlertTriangle className="w-10 h-10 text-[#4da6a8] mb-3" />
               <h3 className="text-gray-400 text-sm mb-1">Total Potholes</h3>
               <p className="text-3xl font-bold text-white">{statistics.total_potholes_detected}</p>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border-2 border-green-500 shadow-xl hover:shadow-green-500/50 transition-all">
-              <TrendingUp className="w-10 h-10 text-green-400 mb-3" />
+            <div className="bg-[#1a1a1a] p-6 rounded-2xl border border-[#4da6a8]/30">
+              <TrendingUp className="w-10 h-10 text-[#4da6a8] mb-3" />
               <h3 className="text-gray-400 text-sm mb-1">Avg per Video</h3>
               <p className="text-3xl font-bold text-white">{parseFloat(statistics.average_potholes_per_video || 0).toFixed(1)}</p>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border-2 border-red-500 shadow-xl hover:shadow-red-500/50 transition-all">
-              <DollarSign className="w-10 h-10 text-red-400 mb-3" />
+            <div className="bg-[#1a1a1a] p-6 rounded-2xl border border-[#4da6a8]/30">
+              <DollarSign className="w-10 h-10 text-[#4da6a8] mb-3" />
               <h3 className="text-gray-400 text-sm mb-1">Total Cost</h3>
               <p className="text-3xl font-bold text-white">${parseFloat(statistics.total_estimated_cost || 0).toFixed(0)}</p>
             </div>
           </div>
         )}
 
-        <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 shadow-2xl">
+        <div className="bg-[#1a1a1a] rounded-2xl border border-[#4da6a8]/20 p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-white">Video Analysis Results</h2>
             <button
               onClick={fetchVideos}
               disabled={loading}
-              className="text-sky-400 hover:text-sky-300 transition-colors"
+              className="text-[#4da6a8] hover:text-[#3e8c8e] transition-colors"
             >
               <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
             </button>
@@ -376,7 +376,7 @@ const VideoAnalysis = () => {
 
           {loading && videos.length === 0 ? (
             <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sky-500 mx-auto mb-4"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4da6a8] mx-auto mb-4"></div>
               <p className="text-gray-400">Loading videos...</p>
             </div>
           ) : videos.length === 0 ? (
@@ -390,12 +390,12 @@ const VideoAnalysis = () => {
               {videos.map((video) => (
                 <div
                   key={video.id}
-                  className="bg-black/30 rounded-xl overflow-hidden border border-white/10 hover:border-sky-500/50 transition-all shadow-lg hover:shadow-xl"
+                  className="bg-[#0f0f0f] rounded-xl overflow-hidden border border-[#2a2a2a] hover:border-[#4da6a8]/50 transition-all"
                 >
                   {video.thumbnail_url ? (
                     <img src={video.thumbnail_url} alt="Video thumbnail" className="w-full h-48 object-cover" />
                   ) : (
-                    <div className="w-full h-48 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
+                    <div className="w-full h-48 bg-[#1a1a1a] flex items-center justify-center">
                       <Video className="w-16 h-16 text-gray-600" />
                     </div>
                   )}
@@ -406,7 +406,7 @@ const VideoAnalysis = () => {
                         {video.status.toUpperCase()}
                       </span>
                       {video.status === 'processing' && (
-                        <span className="text-sky-400 text-sm">{video.processing_progress}%</span>
+                        <span className="text-[#4da6a8] text-sm">{video.processing_progress}%</span>
                       )}
                     </div>
 
@@ -421,7 +421,7 @@ const VideoAnalysis = () => {
                       </div>
                     )}
 
-                                          {video.status === 'completed' && (
+                    {video.status === 'completed' && (
                       <div className="grid grid-cols-2 gap-2 mb-3 text-sm">
                         <div>
                           <p className="text-gray-400">Potholes</p>
@@ -445,13 +445,13 @@ const VideoAnalysis = () => {
                     )}
 
                     {video.status === 'failed' && video.error_message && (
-                      <p className="text-red-400 text-sm mb-3">{video.error_message}</p>
+                      <p className="text-[#c85c5c] text-sm mb-3">{video.error_message}</p>
                     )}
 
                     <button
                       onClick={() => viewVideoDetails(video.id)}
                       disabled={video.status !== 'completed'}
-                      className="w-full bg-sky-500 hover:bg-sky-600 disabled:bg-gray-600 text-white py-2 rounded-lg flex items-center justify-center gap-2 transition-all"
+                      className="w-full bg-[#4da6a8] hover:bg-[#3e8c8e] disabled:bg-gray-600 text-white py-2 rounded-lg flex items-center justify-center gap-2 transition-all"
                     >
                       <Eye className="w-4 h-4" />
                       View Details
