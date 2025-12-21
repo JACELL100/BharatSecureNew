@@ -43,7 +43,7 @@ This application allows users to:
 - **Framework**: React 18.3.1
 - **Build Tool**: Vite
 - **UI Components**: Material-UI (MUI), React Bootstrap, Tailwind CSS
-- **Maps**: Leaflet with heat mapping
+- **OpenSreetMaps**: Leaflet with heat mapping
 - **Charts**: Recharts and Chart.js
 - **State Management**: React Context API
 - **HTTP Client**: Axios
